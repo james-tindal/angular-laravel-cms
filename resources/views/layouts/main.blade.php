@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="css/style.css">
     <!--[if !IE 7]><style>#wrap{display:table;height:100%}</style><![endif]-->
     <!--[if lt IE 9]><script src="js/vendor/selectivizr-1.0.2.min.js"></script><![endif]-->
-    <script src="js/vendor/modernizr-2.8.2.min.js"></script>
-    <script src="js/vendor/respond.js-1.4.2.min.js"></script>
     @yield('head')
   </head>
   <body>

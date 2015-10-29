@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace HLS\Http\Controllers;
 
+use Carbon\Carbon;
+use HLS\Article;
+use HLS\Event;
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use HLS\Http\Requests;
+use HLS\Http\Controllers\Controller;
 
 class Pages extends Controller
 {
@@ -36,7 +39,9 @@ class Pages extends Controller
      */
     public function getNews()
     {
-        return view('news');
+//        $articles = Article::latest('published_at')->where('published_at', '<=', Carbon::Now())->get();
+
+        return view('news', compact('articles'));
     }
 
     /**
@@ -46,7 +51,10 @@ class Pages extends Controller
      */
     public function getEventsAndTraining()
     {
-        return view('events-and-training');
+//        $events = Event::latest('published_at')->where('published_at', '<=', Carbon::Now())->get();
+        // Query may need to be a little more complicated than this.
+
+        return view('events-and-training', compact('events'));
     }
 
     /**
@@ -70,24 +78,13 @@ class Pages extends Controller
     }
 
     /**
-     * Display Contact Us page.
+     * Show Angular admin app or log-in form
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function getContactUs()
+    public function getAdmin()
     {
-        return view('contact-us');
+        return view('admin.index');
     }
-
-    /**
-     * Save Enquiry
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function postContactUs()
-    {
-        return view('contact-us-post');
-    }
-
 
 }
