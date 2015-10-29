@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace HLS\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use HLS\Http\Requests;
+use HLS\Http\Controllers\Controller;
 
 class MemberArea extends Controller
 {

@@ -103,7 +103,7 @@
           <label for="phone-number">Phone no.</label>
           <label for="job-title">Job title</label>
           <label for="company-name">Company name</label>
-          <label for="anything-else">Anything else?</label>
+          <label for="comment">Anything else?</label>
         </div>
         <form method="POST">
           <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
@@ -123,7 +123,7 @@
           <input name="phone-number" type="tel" id="phone-number">
           <input name="job-title" type="text" id="job-title">
           <input name="company-name" type="text" id="company-name">
-          <textarea name="anything-else" id="anything-else"></textarea>
+          <textarea name="comment" id="anything-else"></textarea>
           <input type="submit" class="submit-button" value="Submit">
         </form>
         <div></div>
