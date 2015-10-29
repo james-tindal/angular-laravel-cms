@@ -1,16 +1,51 @@
-var elixir = require('laravel-elixir');
+var gulp = require('gulp'),
+		gutil = require('gulp-util'),
+		plumber = require('gulp-plumber'),
+		nodemon = require('gulp-nodemon'),
+    minifyCSS = require('gulp-minify-css'),
+    sourcemaps = require('gulp-sourcemaps'),
+		stylus = require('gulp-stylus'),
+		jeet = require('jeet'),
+		koutoswiss = require('kouto-swiss');
 
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
+var onError = function (err) {
+  gutil.beep();
+  console.log(err);
+};
 
-elixir(function(mix) {
-    mix.sass('app.scss');
+gulp.task('stylus', function () {
+  gulp.src('./public/css/*.styl')		 // .styl
+    .pipe(plumber({
+      errorHandler: onError
+    }))
+    .pipe(sourcemaps.init())
+      .pipe(stylus({
+  			use: [jeet(), koutoswiss()]
+      }))
+      .pipe(gulp.dest('./public/css')) // .css
+      .pipe(minifyCSS({
+        cache: true,
+        keepSpecialComments: 0,
+        noRebase: true
+      }))
+      .pipe(gulp.dest('./public/css'))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./public/css'));  // .min.map
 });
+
+gulp.task('watch', function() {
+  gulp.watch('./public/css/*.styl', ['stylus']);
+});
+
+gulp.task('develop', function () {
+  nodemon({
+    script: 'bin/www',
+    ext: 'js ect'
+  })
+});
+
+gulp.task('default', [
+  'stylus',
+  'develop',
+  'watch'
+]);
