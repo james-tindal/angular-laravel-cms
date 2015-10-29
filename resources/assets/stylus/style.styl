@@ -1,0 +1,609 @@
+ks-no-conflict = true
+ks-vendors-prefixes = recommended
+@import 'kouto-swiss'
+@import 'jeet'
+
+@import 'reset.css'
+@import 'fontello.css'
+@import 'font-face'
+  
+//edit()
+
+$default-font-size = 16
+$px = ( 1 / $default-font-size ) rem
+$pxe = ( 1 / $default-font-size ) em
+
+$footer-height = 100*$px
+
+$center-bgcolor = #fff
+$text-color = #444
+$highlight-colour = #6aa7d4
+$hover-bg-colour = rgba(118,83,152,10%)
+
+
+// --------------------------------
+
+:link
+:visited
+  color $text-color
+a:hover
+  color $highlight-colour
+body
+  color $text-color
+  font-family 'Roboto', sans-serif
+  font-size 11.25*$px
+p, li
+  line-height 17*$px
+  padding-bottom .6rem
+span.amp
+  font-family 'Sorts Mill Goudy', 'Goudy Old Style', Palatino, 'Book Antiqua', 'Open Sans'
+  font-size 110%
+  font-style italic
+  font-weight normal
+.wrap
+footer
+  center(960*$px, 1.825rem)
+  background-color $center-bgcolor
+  
+
+// begin sticky-footer code
+html
+body
+  height 90%
+.wrap
+  min-height 100%
+main
+  overflow auto
+  padding-bottom $footer-height
+.footer
+  position relative
+  margin-top ( 0 - $footer-height )
+  height $footer-height
+  clear: both
+// Opera fix
+body:before
+  content ''
+  height 100%
+  float left
+  width 0
+  margin-top -32767px
+// end sticky-footer code
+
+.container
+footer
+  > div
+    @media(min-width 700px)
+      col(1/2, cycle: 2, gutter: 2.5rem)
+
+.wrap > header
+  text-align center
+  nav
+    width 100%
+    font-size 14*$px
+    ul
+      overflow hidden
+      list-style none
+      margin 0
+      border-bottom 1px solid #ccc
+      border-top 1px solid #ccc
+      height 143*$px
+    li
+      padding 7*$px 0 0 0
+      span(1/7)
+      height 100%
+      &:hover
+        background-color $hover-bg-colour
+    li a
+      display block
+      padding 50*$px 0px
+      text-decoration none
+      color $highlight-colour
+  nav li:nth-of-type(3)
+    padding-left 4.5*$px
+    padding-right 5*$px
+header nav .logo
+  position relative
+  img
+    width 121*$px
+    height auto
+    position absolute
+    left 50%
+    top 50%
+    bottom 50%
+    -webkit-transform translate(-50%, -50%)
+    transform translate(-50%, -50%)
+    -ms-transform translate(-50%, -50%)
+
+
+//- footer -//
+.footer__left
+  .logo
+    col(1/3)
+    padding 5*$px
+    img
+      position relative
+      top -20px
+      width 121*$px
+      height 121*$px
+  p
+    col(2/3)
+.footer__right
+.footer__right > div
+  float right
+  p
+    padding 10*$px
+footer
+  nav
+    font-size 14*$px
+    padding-bottom 14*$px
+    :link
+      text-decoration none
+    li:after
+      content ' / '
+      padding-left 7*$px
+      padding-right 7*$px
+    li:last-of-type:after
+      content ''
+    li
+      line-height 0%
+      display inline-block
+
+//-  end footer -//
+
+
+h1
+  font-family 'Open Sans', sans-serif
+  font-size 39*$px
+  margin-bottom 21*$px
+h2
+  font-family 'Open Sans', sans-serif
+  text-transform uppercase
+  font-size 20*$px
+h3
+  font-size 14*$px
+  font-weight normal
+  padding-bottom 14*$px
+  text-transform uppercase
+h4
+  font-family 'Open Sans', sans-serif
+  font-size 16*$px
+  padding-bottom 8*$px
+h5
+  font-weight bold
+
+
+.hero
+	padding 4rem 0
+	h1
+		center(450*$px)
+	li
+		display inline-block
+		font-size 17*$px
+		padding 8*$px 12*$px
+		&:before
+			font-family 'fontello'
+			font-size 1.5rem
+			content "\e800"
+			speak none
+			padding 0px 15*$px
+
+
+  //- index -//
+  
+.become-a-member-button
+  width auto
+  display inline-flex
+  align-items center
+  text-align center
+  border 2*$px solid
+  height 43*$px
+  font-size 14*$px
+  text-transform uppercase
+  text-decoration none
+  &:hover
+    background-color $hover-bg-colour
+    border-color black
+    cursor pointer
+footer .become-a-member-button
+  padding 8*$px 46*$px
+  width 229*$px
+
+// Header
+header .become-a-member-button
+  width 185*$px
+  padding 8*$px 24*$px
+  margin-bottom 41*$px
+.member-benefits
+  center()
+  font-size 14*$px
+  border-bottom 2*$px solid
+  padding 4*$px
+  margin-bottom 10*$px
+  width 229*$px
+  text-transform uppercase
+  
+
+// News
+.news
+  section
+    padding-bottom 22*$px
+    overflow auto
+    > p a // 'Read more'
+      font-style italic
+  header > p
+    padding-bottom 6*$px
+    a:link
+      text-decoration none
+    span:after
+      content " | "
+      padding-left 7*$px
+      padding-right 7*$px
+
+// In Numbers
+.box
+  overflow hidden
+  border 2*$px solid
+  padding 9*$px 20*$px 
+  width 100%
+  height 100%
+.number
+  col(1/3)
+  font-size 50*$px
+.text
+  col(2/3)
+  padding 5*$px 0
+  line-height 17*$px
+
+
+  //- about-us -//
+
+.about-us
+  font-size 14.3*$px
+  cf()
+  padding-bottom 50px
+  > div
+    @media(min-width 700px)
+      col(1/2, cycle: 2, gutter: 2.5rem)
+  h5
+    font-size 14.6*$px
+    padding-bottom .75rem
+  p
+    line-height 1.5
+  li
+    line-height 1.5
+    margin-left 1rem
+    padding-left 1rem
+
+.the-team
+  cf()
+  > div
+    @media(min-width 700px)
+      col(1/2, cycle: 2, gutter: 2.5rem)
+  h3
+    text-align center
+.team-member
+  padding-bottom 1rem
+  h5
+    padding-bottom .6rem
+    font-size 11.25*$px
+  img
+    col(1/3)
+    max-width 135*$px
+    height 135*$px
+  div
+    col(2/3)
+  
+
+  //- news -//
+
+.latest-news
+  @extend .news
+  @media (min-width 960*$px)
+    col(2/3, gutter: 2rem)
+  section
+    aside
+      col(3/8 2/3, gutter: 2rem)
+      
+// Category Nav
+.news-categories
+  @media (min-width 960*$px)
+    col(1/3)
+  border 1*$px solid
+  li
+    display flex
+    border 1*$px solid
+    height 45*$px
+    font-size 14*$px
+    &:hover
+      background-color $hover-bg-colour
+    a
+      text-decoration none
+      width 100%
+      line-height 45px
+      text-align center
+      
+      
+  //- events-and-training -//
+.events-nav
+  margin-bottom 20*$px
+  ul
+    max-width 258*$px
+    overflow auto
+  li
+    col(1/2, gutter: 60*$px, cycle: 2)
+    margin-bottom 10*$px
+    padding-bottom 0px
+    display inline-flex
+    border 2*$px solid
+    font-size 14*$px
+    line-height 46*$px
+    &:hover
+      background-color $hover-bg-colour
+  a
+    text-decoration none
+    width 100%
+    text-align center
+      
+  @media(min-width: 469*$px)
+    ul
+      max-width 516*$px
+    li
+      col(1/4, gutter: 60*$px, uncycle: 2, cycle: 4)
+  
+.events
+  section
+    max-width 440*$px
+    @media(min-width: 520*$px)
+      col(1/2, gutter: 18*$px, cycle: 2)
+    padding-bottom 22*$px
+    overflow auto
+    > p a // 'Read more'
+      font-style italic
+  header > p
+    padding-bottom 6*$px
+    a:link
+      text-decoration none
+    span:after
+      content " | "
+      padding-left 7*$px
+      padding-right 7*$px
+      
+
+  //- become-a-member -//
+.become-a-member > section:first-of-type
+  border 1*$px solid
+  font-size 14*$px
+  margin-bottom 43*$px
+  $selected-bgc = white
+  p
+    line-height 1.5
+  nav
+    font-size 14*$px
+    a
+      text-decoration none
+      text-transform uppercase
+    ul
+      overflow hidden
+      list-style none
+      text-transform uppercase
+    li
+      height 60*$px
+      border 1px solid
+      border-bottom 2px solid
+      span(1/3)
+      display flex
+      align-items center
+      margin 0
+      padding 0
+    li:hover
+      color $highlight-colour
+      border-color black
+      background-color $hover-bg-colour
+      cursor pointer
+    li.active
+      border-bottom-color white
+      &:hover
+        color $text-color
+        background-color $selected-bgc
+        cursor initial
+    span
+      width 100%
+      display block
+      text-align center
+  article
+    cf()
+    border 1px solid
+    border-top 0
+    padding 39*$px 74*$px (39*$px - .6rem)
+  aside
+    span(1/3)
+    padding 0 1rem
+  article[title='Support'] aside img
+      float right
+  article > div
+    span(2/3)
+  li
+    line-height 1.5
+    margin-left .75rem
+    padding-left .5rem
+    
+.membership-subscriptions
+  text-align center
+  div
+    cf()
+    margin-bottom 57*$px
+    col(1/4, cycle: 5, gutter: 30.15*$px)
+    border 2*$px solid
+    padding-top 36*$px
+    padding-bottom 36*$px
+    &:hover
+      background-color $hover-bg-colour
+    span
+      font-family Open Sans
+      font-size 43*$px
+  .become-a-member-button
+    width 288*$px
+    padding-left 77*$px
+    padding-right 77*$px
+    height 63*$px
+
+.overlay
+  opacity 0.8
+  display none
+  position fixed
+  left 0px
+  top 0px
+  bottom 0
+  right 0
+  z-index 100
+  background-color white
+
+.modal-form
+  display none
+  z-index 200
+  position absolute
+  top 110*$px
+  left 0
+  right 0
+  margin-left auto
+  margin-right auto
+  border 2*$px solid #444
+  padding 23*$px 76*$px 36.5*$px 76*$px
+  background-color white
+  width 746*$px
+  p
+    font-size 14*$px
+    padding-bottom 28*$px
+  #other-salutation
+    display none
+  label[for="other-salutation"]
+    display none
+    visibility hidden
+  select
+    padding 11.5*$px
+  form
+    col(5/8)
+  .labels
+    col(2/8)
+  >div:nth-of-type(2)
+    col(1/8)
+    
+$button
+  display flex
+  text-align center
+  border 2*$px solid
+  font-size 14*$px
+  text-transform uppercase
+  background-color #fff
+  &:hover
+    background-color $hover-bg-colour
+    color $highlight-colour
+    border-color #000
+    
+  
+  //- contact-us -//
+.postnotice
+  position absolute
+  top 200*$px
+  left 500*$px
+  text-shadow 0 0 7*$px $highlight-colour
+.contact-us
+  section
+    cf()
+  h3
+    width 100%
+    text-align center
+.labels
+  col(2/12, gutter: 2rem)
+label
+  display block
+  width 100%
+  text-align right 
+  line-height 46*$px
+  font-size 14*$px
+  margin-bottom 17*$px
+form
+  col(5/12, gutter: 2rem)
+  input, textarea, select
+    width 100%
+    border 2*$px solid
+    padding-left 17*$px
+    padding-right 17*$px
+    line-height 42*$px
+    margin-bottom 17*$px
+    font-size 14*$px
+  textarea
+    line-height initial
+    padding 13*$px
+.submit-button
+  @extend $button
+  height 63*$px
+.contact-form-section
+  address
+    col(4/12, gutter: 2rem)
+    float right
+    border 2*$px solid
+    padding 18*$px
+    padding-bottom 0
+    font-style normal
+    p
+      font-size 14*$px
+      line-height 21*$px
+      margin-bottom 19*$px
+    .title
+      font-size 20*$px
+      line-height 14*$px
+  input[type='submit']
+    margin-top 17*$px
+    margin-bottom 61*$px
+
+.contacts
+  padding-top 17*$px
+.contacts address
+  col(1/2, cycle: 2)
+  font-style normal
+  div
+    padding-top 24*$px
+  a
+    text-decoration none
+    
+  
+    //- member-area -//
+
+.member-area_log-in
+  col(1/2)
+  border 2*$px solid
+  padding 20*$px
+  h4
+    font-size 24.5*$px
+  p
+    font-size 14*$px
+    margin-bottom 10*$px
+  .labels
+    col(1/3 1/2)
+  form:first-of-type
+    col(2/3 1/2, cycle: 2)
+  form
+    width 100%
+  input[type="submit"]
+    width 100%
+    margin-top 10*$px
+    
+
+.member-area_sign-up
+  col(1/2)
+  border 2*$px solid
+  padding 20*$px
+  padding-bottom 32*$px
+  font-size 14*$px
+  h4
+    font-size 24.5*$px
+  p
+    margin-bottom 102*$px
+  .become-a-member-button
+    height 63*$px
+    width 100%
+    margin-top 15*$px
+    span
+      width 100%
+      text-align center
