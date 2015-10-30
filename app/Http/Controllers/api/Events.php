@@ -1,14 +1,13 @@
 <?php
 
-namespace HLS\Http\Controllers;
+namespace HLS\Http\Controllers\api;
 
-use Carbon\Carbon;
-use HLS\Article;
+use HLS\Event;
 use Illuminate\Http\Request;
 use HLS\Http\Requests;
 use HLS\Http\Controllers\Controller;
 
-class News extends Controller
+class Events extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,7 @@ class News extends Controller
      */
     public function index()
     {
-        $articles = Article::latest('published_at')->where('published_at', '<=', Carbon::Now())->get();
-
-        return view('news', compact('articles'));
+        return Event::latest('published_at')->get();
     }
 
     /**
@@ -51,7 +48,7 @@ class News extends Controller
      */
     public function show($id)
     {
-        //
+        return Event::findOrFail($id);
     }
 
     /**

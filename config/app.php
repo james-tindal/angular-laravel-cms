@@ -144,6 +144,7 @@ return [
         HLS\Providers\AuthServiceProvider::class,
         HLS\Providers\EventServiceProvider::class,
         HLS\Providers\RouteServiceProvider::class,
+        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
 
     ],
 

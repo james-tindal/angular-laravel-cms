@@ -4,9 +4,13 @@ namespace HLS;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Article extends Model
+class Article extends Model implements SluggableInterface
 {
+    use SluggableTrait;
+
     protected $fillable = [
         'title',
         'brief',
@@ -16,11 +20,16 @@ class Article extends Model
         'published_at',
     ];
 
+    protected $sluggable = [
+        'build_from' => 'title',
+        'save_to'    => 'slug',
+    ];
+
     protected $dates = ['published_at'];
 
     public function scopePublished($query)
     {
-        $query->where('published_at', '<=', Carbon::now());
+        $query->where('published_at', '<=', Carbon::now())->where('archived', false);
     }
 
     public function setPublishedAtAttribute($date)

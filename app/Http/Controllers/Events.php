@@ -25,10 +25,10 @@ class Events extends Controller
 
         $training = Event::latest('date')
             ->where('date', '<=', Carbon::Now())
-            ->where('training', '=', 'true')->get();
+            ->where('training', true)->get();
         //dd(compact('events', 'pastevents', 'training'));
 
-        return view('events-and-training', compact('events', 'pastevents', 'training'));
+        return view('pages.events-and-training', compact('events', 'pastevents', 'training'));
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use HLS\MemberRequest;
 use Illuminate\Database\Seeder;
 
 class MemberRequestSeeder extends Seeder
@@ -11,6 +12,6 @@ class MemberRequestSeeder extends Seeder
      */
     public function run()
     {
-        factory(HLS\MemberRequest::class, 10)->create();
+        factory(MemberRequest::class, 10)->create();
     }
 }

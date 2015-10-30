@@ -1,5 +1,6 @@
 <?php
 
+use HLS\Event;
 use Illuminate\Database\Seeder;
 
 class EventsSeeder extends Seeder
@@ -11,6 +12,6 @@ class EventsSeeder extends Seeder
      */
     public function run()
     {
-        factory(HLS\Event::class)->create();
+        factory(Event::class, 15)->create();
     }
 }

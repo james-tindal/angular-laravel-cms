@@ -1,5 +1,6 @@
 <?php
 
+use HLS\User;
 use Illuminate\Database\Seeder;
 
 class UsersSeeder extends Seeder
@@ -11,7 +12,7 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        factory(HLS\User::class, 10)->create();
-        factory(HLS\User::class, 2)->create(['administrator' => true]);
+        factory(User::class, 10)->create();
+        factory(User::class, 2)->create(['administrator' => true]);
     }
 }

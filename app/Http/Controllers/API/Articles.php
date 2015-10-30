@@ -48,7 +48,7 @@ class Articles extends Controller
      */
     public function show($id)
     {
-        //
+        return Article::findOrFail($id);
     }
 
     /**
