@@ -17,11 +17,14 @@ class CreateMemberRequestsTable extends Migration
             $table->enum('salutation',
                 ['Mr', 'Mrs', 'Miss', 'Ms', 'Dr', 'Prof', 'Rev', 'Other']);
             $table->string('other-salutation')->nullable;
+            $table->string('name');
             $table->string('email');
             $table->string('phone-number');
             $table->string('job-title');
             $table->string('company-name');
             $table->string('comment');
+            $table->boolean('archived');
+            $table->timestamp('date');
             $table->timestamps();
         });
     }

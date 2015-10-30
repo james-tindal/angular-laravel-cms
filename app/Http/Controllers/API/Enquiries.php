@@ -1,13 +1,11 @@
-<?php
+<?php namespace HLS\Http\Controllers\api;
 
-namespace HLS\Http\Controllers\api;
-
-use HLS\Article;
+use HLS\Enquiry;
 use Illuminate\Http\Request;
 use HLS\Http\Requests;
 use HLS\Http\Controllers\Controller;
 
-class Articles extends Controller
+class Enquiries extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,10 @@ class Articles extends Controller
      */
     public function index()
     {
-        return Article::latest('published_at')->get();
+        $enquiries = Enquiry::all();
+        Response::json([
+            'data' => $enquiries->toArray()
+        ]);
     }
 
     /**
@@ -26,7 +27,7 @@ class Articles extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -37,7 +38,7 @@ class Articles extends Controller
      */
     public function store(Request $request)
     {
-        Article::create($request->all());
+        //
     }
 
     /**
