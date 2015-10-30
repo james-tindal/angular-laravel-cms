@@ -1,5 +1,6 @@
 <?php
 
+use HLS\Category;
 use Illuminate\Database\Seeder;
 
 class CategoriesSeeder extends Seeder
@@ -11,6 +12,6 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
-        factory(HLS\Category::class, 10)->create();
+        factory(Category::class, 10)->create();
     }
 }

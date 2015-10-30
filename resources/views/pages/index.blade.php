@@ -20,21 +20,16 @@
       <div class="news">
         <h3>News</h3>
 
-        <section>
-          <header>
-            <h4>A news item</h4>
-            <p><span>xx/xx/xx</span><a href="category/a-category">A category</a></p>
-          </header>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Repellendus nulla iure totam, cum labore culpa quisquam libero natus quae voluptate. Et rerum officia nihil reprehenderit dolorem quidem doloribus, dolorum assumenda. <a href="single/a-news-item">Read More</a></p>
-        </section>
+        @foreach($articles as $article)
+          <section>
+            <header>
+              <h4>{{ $article->title }}</h4>
+              <p><span>{{ $article->date }}</span><a href="category/a-category">A category</a></p>
+            </header>
+            <p>{{ $article->brief }} <a href="single/a-news-item">Read More</a></p>
+          </section>
+        @endforeach
 
-        <section>
-          <header>
-            <h4>A news item</h4>
-            <p><span>xx/xx/xx</span><a href="category/a-category">A category</a></p>
-          </header>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Repellendus nulla iure totam, cum labore culpa quisquam libero natus quae voluptate. Et rerum officia nihil reprehenderit dolorem quidem doloribus, dolorum assumenda. <a href="single/a-news-item">Read More</a></p>
-        </section>
       </div>
 
       <div class="in-numbers">
