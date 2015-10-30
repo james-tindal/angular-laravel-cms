@@ -17,9 +17,10 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->text('brief');
             $table->text('extended');
-            $table->boolean('training');
-            $table->timestamp('published_at');
+            $table->date('date');
             $table->string('image_url');
+            $table->boolean('training')->default(false);
+            $table->boolean('archived')->default(false);
             $table->timestamps();
         });
     }

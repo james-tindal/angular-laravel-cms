@@ -2,12 +2,12 @@
 
 namespace HLS\Http\Controllers\api;
 
-use HLS\Article;
+use HLS\MemberRequest;
 use Illuminate\Http\Request;
 use HLS\Http\Requests;
 use HLS\Http\Controllers\Controller;
 
-class Articles extends Controller
+class MemberRequests extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class Articles extends Controller
      */
     public function index()
     {
-        return Article::latest('published_at')->get();
+        return MemberRequest::latest('date')->get();
     }
 
     /**
@@ -26,7 +26,7 @@ class Articles extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -37,7 +37,7 @@ class Articles extends Controller
      */
     public function store(Request $request)
     {
-        Article::create($request->all());
+        MemberRequest::create($request->all());
     }
 
     /**

@@ -15,11 +15,11 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-//            $table->enum('state', ['draft', 'published', 'archived']);
             $table->text('brief');
             $table->text('extended');
+            $table->string('image_url')->nullable();
+            $table->boolean('archived')->default(false);
             $table->timestamp('published_at');
-            $table->string('image_url');
             $table->timestamps();
         });
     }

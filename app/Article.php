@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     protected $fillable = [
-        ''
+        'title',
+        'brief',
+        'extended',
+        'image_url',
+        'archived',
+        'published_at',
     ];
 
     protected $dates = ['published_at'];
@@ -21,6 +26,16 @@ class Article extends Model
     public function setPublishedAtAttribute($date)
     {
         $this->attributes['published_at'] = Carbon::parse($date);
+    }
+
+    /**
+     * Get the categories associated with the given article
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 
 }

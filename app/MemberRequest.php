@@ -14,5 +14,6 @@ class MemberRequest extends Model
         'job-title',
         'company-name',
         'comment',
+        'date',
     ];
 }

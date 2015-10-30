@@ -2,9 +2,7 @@
 
 namespace HLS\Http\Controllers;
 
-use Carbon\Carbon;
-use HLS\Article;
-use HLS\Event;
+use HLS\MemberRequest;
 use Illuminate\Http\Request;
 use HLS\Http\Requests;
 use HLS\Http\Controllers\Controller;
@@ -33,31 +31,6 @@ class Pages extends Controller
     }
 
     /**
-     * Display News page.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getNews()
-    {
-//        $articles = Article::latest('published_at')->where('published_at', '<=', Carbon::Now())->get();
-
-        return view('news', compact('articles'));
-    }
-
-    /**
-     * Display Events and Training page.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getEventsAndTraining()
-    {
-//        $events = Event::latest('published_at')->where('published_at', '<=', Carbon::Now())->get();
-        // Query may need to be a little more complicated than this.
-
-        return view('events-and-training', compact('events'));
-    }
-
-    /**
      * Display Become a Member page.
      *
      * @return \Illuminate\Http\Response
@@ -72,8 +45,10 @@ class Pages extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function postBecomeAMember()
+    public function postBecomeAMember(Request $request)
     {
+        MemberRequest::create($request->all());
+
         return view('thank-you')->withTitle('Become a Member');
     }
 
