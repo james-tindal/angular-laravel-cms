@@ -12,22 +12,24 @@ class ArticlesSeeder extends Seeder
      */
     public function run()
     {
-        factory(Article::class, 16)->create()->each(function($article){
-            $this->attachThreeCategories($article);
+        factory(Article::class, 10)->create()->each(function($article){
+            $this->attachTwoCategories($article);
         });
+
+        factory(Article::class, 6)->create();
     }
 
-    public function attachThreeCategories($article)
+    public function attachTwoCategories($article)
     {
-        foreach ($this->threeCategoryIds() as $id) {
+        foreach ($this->twoCategoryIds() as $id) {
             $article->categories()->attach($id);
         }
     }
 
-    private function threeCategoryIds()
+    private function twoCategoryIds()
     {
-        $numbers = range(1, 10);
+        $numbers = range(1, 5);
         shuffle($numbers);
-        return array_slice($numbers, 1, 3);
+        return array_slice($numbers, 1, 2);
     }
 }

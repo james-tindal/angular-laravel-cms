@@ -1,26 +1,26 @@
 <?php
 
-Route::get('/', 'Pages@getIndex');
+Route::get('/', 'Pages@index');
 
-Route::get('/about-us', 'Pages@getAboutUs');
+Route::get('/about-us', 'Pages@aboutUs');
 
-Route::get('/news', 'Pages@getNews');
+Route::get('/news', 'Pages@news');
+Route::get('/news/{slug}', 'Pages@article');
+Route::get('category/{name}', 'Pages@category');
 
-Route::get('category/{category}', 'Pages@getCategory');
+Route::get('/events-and-training', 'Pages@events');
 
-Route::get('/events-and-training', 'Events@index');
-
-Route::get('/become-a-member', 'Pages@getBecomeAMember');
+Route::get('/become-a-member', 'Pages@becomeAMember');
 Route::post('/become-a-member', 'Pages@postBecomeAMember');
 
-Route::get('/contact-us', 'Pages@getContactUs');
+Route::get('/contact-us', 'Pages@contactUs');
 Route::post('/contact-us', 'Pages@postContactUs');
 
 Route::group(['prefix' => 'member-area'], function() {
 	Route::get('/', 'MemberArea@getIndex');
 });
 
-Route::get('/admin', 'Pages@getAdmin');
+Route::get('/admin', 'Pages@admin');
 
 Route::group(['prefix' => 'api', 'namespace' => 'api'], function() {
     Route::resource('articles', 'Articles');
