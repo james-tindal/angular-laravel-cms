@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use HLS\Article;
 use HLS\Category;
 use HLS\Enquiry;
-use HLS\Event;
 use HLS\MemberRequest;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -59,10 +58,14 @@ class Pages extends Controller
      */
     public function article($slug)
     {
-        $article = Article::where('slug', $slug)->published()->first();
+        $article = Article::findBySlugOrFail($slug);
         $article->date = $article->published_at->format('d-m-Y');
 
         $related = $this->getRelatedArticles($article);
+
+        if ($article->published_at >= Carbon::now()) {
+            abort(404);
+        }
 
         return view('pages.article', compact('article', 'related'));
     }
@@ -75,7 +78,7 @@ class Pages extends Controller
      */
     public function category($name)
     {
-        $articles = Category::where('name', $name)->first()->articles->filter(function ($article) {
+        $articles = Category::findByNameOrFail($name)->articles->filter(function ($article) {
             return $article->published_at <= Carbon::now();
         })->each(function ($article) {
             // Add formatted date from published_at
@@ -85,26 +88,6 @@ class Pages extends Controller
         $categories = Category::all();
 
         return view('pages.category', compact('name', 'articles', 'categories'));
-    }
-
-    /**
-     * Display events index
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function events()
-    {
-        $events = Event::latest('date')
-            ->where('date', '<=', Carbon::Now())->get();
-
-        $pastevents = Event::latest('date')
-            ->where('date', '>=', Carbon::Now())->get();
-
-        $training = Event::latest('date')
-            ->where('date', '<=', Carbon::Now())
-            ->where('training', true)->get();
-
-        return view('pages.events-and-training', compact('events', 'pastevents', 'training'));
     }
 
     /**
@@ -164,12 +147,9 @@ class Pages extends Controller
 
     protected function getLatestArticles()
     {
-        $articles = Article::latest('published_at')->published()->get();
-
-        // Add formatted date from published_at
-        foreach ($articles as $article) {
+        $articles = Article::latest('published_at')->published()->get()->each(function ($article) {
             $article->date = $article->published_at->format('d-m-Y');
-        }
+        });
 
         return $articles;
     }

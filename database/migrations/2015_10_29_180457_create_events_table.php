@@ -18,7 +18,7 @@ class CreateEventsTable extends Migration
             $table->string('slug');
             $table->text('brief');
             $table->text('extended');
-            $table->date('date');
+            $table->date('event_date');
             $table->string('image_url');
             $table->boolean('training')->default(false);
             $table->boolean('archived')->default(false);

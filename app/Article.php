@@ -37,6 +37,8 @@ class Article extends Model implements SluggableInterface
         $this->attributes['published_at'] = Carbon::parse($date);
     }
 
+
+
     /**
      * Get the categories associated with the given article
      *
