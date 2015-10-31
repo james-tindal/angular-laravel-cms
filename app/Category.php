@@ -19,4 +19,9 @@ class Category extends Model
     {
         return $this->belongsToMany(Article::class);
     }
+
+    public static function findByNameOrFail($name)
+    {
+        return self::whereName($name)->firstOrFail();
+    }
 }

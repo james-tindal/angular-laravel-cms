@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Hertfordshire Law Society - News')
+@section('title', 'Hertfordshire Law Society - ' . $article->title)
 @section('main')
 
     <h1>{{ $article->title }}</h1>

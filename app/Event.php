@@ -14,7 +14,7 @@ class Event extends Model implements SluggableInterface
         'title',
         'brief',
         'extended',
-        'date',
+        'event_date',
         'image_url',
         'training',
         'archived'
@@ -26,6 +26,6 @@ class Event extends Model implements SluggableInterface
     ];
 
 
-    protected $dates = ['date'];
+    protected $dates = ['event_date'];
 
 }
