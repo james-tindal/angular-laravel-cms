@@ -1,5 +1,9 @@
 var elixir = require('laravel-elixir');
 
+var gulp = require('gulp');
+var stylus = require('gulp-stylus');
+var koutoswiss = require('kouto-swiss');
+var jeet = require('jeet');
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -11,11 +15,16 @@ var elixir = require('laravel-elixir');
  |
  */
 
+gulp.task('stylus', function () {
+  gulp.src('./resources/assets/stylus/style.styl')
+    .pipe(stylus({
+      use: [jeet(), koutoswiss()]
+    }))
+    .pipe(gulp.dest('./public/css'));
+});
+
 elixir(function (mix) {
   mix
-    .less(
-    'app.less'
-  )
     .styles([
       'style.css'
     ])

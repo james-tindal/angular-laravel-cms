@@ -6,7 +6,7 @@ ks-vendors-prefixes = recommended
 @import 'reset.css'
 @import 'fontello.css'
 @import 'font-face'
-
+  
 //edit()
 
 $default-font-size = 16
@@ -44,7 +44,7 @@ span.amp
 footer
   center(960*$px, 1.825rem)
   background-color $center-bgcolor
-
+  
 
 // begin sticky-footer code
 html
@@ -189,7 +189,7 @@ h5
 
 
   //- index -//
-
+  
 .become-a-member-button
   width auto
   display inline-flex
@@ -221,31 +221,29 @@ header .become-a-member-button
   margin-bottom 10*$px
   width 229*$px
   text-transform uppercase
-
+  
 
 // News
 .news
   section
     padding-bottom 22*$px
     overflow auto
-    > a // 'Read more'
+    > p a // 'Read more'
       font-style italic
-  header
-    a:link
-      text-decoration none
   header > p
     padding-bottom 6*$px
-
-span.with-categories:after
-  content " | "
-  padding-left 7*$px
-  padding-right 7*$px
+    a:link
+      text-decoration none
+    span:after
+      content " | "
+      padding-left 7*$px
+      padding-right 7*$px
 
 // In Numbers
 .box
   overflow hidden
   border 2*$px solid
-  padding 9*$px 20*$px
+  padding 9*$px 20*$px 
   width 100%
   height 100%
 .number
@@ -294,7 +292,7 @@ span.with-categories:after
     height 135*$px
   div
     col(2/3)
-
+  
 
   //- news -//
 
@@ -307,9 +305,9 @@ span.with-categories:after
       col(3/8 2/3, gutter: 2rem)
 .related-articles
   col(1/3)
-
+      
 // Category Nav
-.news-categories ul
+.news-categories
   @media (min-width 960*$px)
     col(1/3)
   border 1*$px solid
@@ -325,8 +323,8 @@ span.with-categories:after
       width 100%
       line-height 45px
       text-align center
-
-
+      
+      
   //- events-and-training -//
 .events-nav
   margin-bottom 20*$px
@@ -347,30 +345,31 @@ span.with-categories:after
     text-decoration none
     width 100%
     text-align center
-
+      
   @media(min-width: 469*$px)
     ul
       max-width 516*$px
     li
       col(1/4, gutter: 60*$px, uncycle: 2, cycle: 4)
-
+  
 .events
   section
     max-width 440*$px
     @media(min-width: 520*$px)
       col(1/2, gutter: 18*$px, cycle: 2)
     padding-bottom 22*$px
-    overflow hidden
-    > a // 'Read more'
+    overflow auto
+    > p a // 'Read more'
       font-style italic
-    img
-      width 440*$px
-      height 336*$px
   header > p
     padding-bottom 6*$px
     a:link
       text-decoration none
-
+    span:after
+      content " | "
+      padding-left 7*$px
+      padding-right 7*$px
+      
 
   //- become-a-member -//
 .become-a-member > section:first-of-type
@@ -429,7 +428,7 @@ span.with-categories:after
     line-height 1.5
     margin-left .75rem
     padding-left .5rem
-
+    
 .membership-subscriptions
   text-align center
   div
@@ -490,7 +489,7 @@ span.with-categories:after
     col(2/8)
   >div:nth-of-type(2)
     col(1/8)
-
+    
 $button
   display flex
   text-align center
@@ -502,8 +501,8 @@ $button
     background-color $hover-bg-colour
     color $highlight-colour
     border-color #000
-
-
+    
+  
   //- contact-us -//
 .postnotice
   position absolute
@@ -521,7 +520,7 @@ $button
 label
   display block
   width 100%
-  text-align right
+  text-align right 
   line-height 46*$px
   font-size 14*$px
   margin-bottom 17*$px
@@ -569,8 +568,8 @@ form
     padding-top 24*$px
   a
     text-decoration none
-
-
+    
+  
     //- member-area -//
 
 .member-area_log-in
@@ -591,7 +590,7 @@ form
   input[type="submit"]
     width 100%
     margin-top 10*$px
-
+    
 
 .member-area_sign-up
   col(1/2)

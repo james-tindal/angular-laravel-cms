@@ -8,7 +8,7 @@ $factory->define(HLS\Article::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence(8),
         'brief' => $faker->text(300),
-        'extended' => $faker->text(400),
+        'extended' => $faker->text(2500),
         'published_at' => Carbon::createFromTimeStamp( $faker->dateTimeBetween( '-1 year', '+3 months' )->getTimestamp() ),
         'image_url' => rand(0,1) ? 'http://lorempixel.com/412/' . rand(160, 460) . '/business' : null
     ];

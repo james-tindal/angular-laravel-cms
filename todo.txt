@@ -1,12 +1,20 @@
 
 
 
-news page 5 articles plus categories
 
 events page. events and categories
 
+paginate events and news, articles
 
 
 
-9-11 hours
-10am
+24-26 hours
+5pm
+
+
+mysql -hjw0ch9vofhcajqg7.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -us8vck84fsx34cw8e -puoqbv5fu3b9j9zt0
+use emgnzrnkds1lnf8s;
+
+php artisan migrate:rollback
+php artisan migrate:refresh --seed
+php artisan db:seed

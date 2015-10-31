@@ -24,9 +24,14 @@
           <section>
             <header>
               <h4>{{ $article->title }}</h4>
-              <p><span>{{ $article->date }}</span><a href="category/a-category">A category</a></p>
+              <p>
+                <span @if(sizeof($article->categories) > 0)class="with-categories"@endif>{{ $article->date }}</span>
+                @foreach($article->categories as $category)
+                  <a href="{{ url('category') }}/{{ $category->name }}">{{ $category->name }}</a>,
+                @endforeach
+              </p>
             </header>
-            <p>{{ $article->brief }} <a href="single/a-news-item">Read More</a></p>
+            <p>{{ $article->brief }} <a href="{{ url('news') }}/{{ $article->slug }}">Read more</a></p>
           </section>
         @endforeach
 
