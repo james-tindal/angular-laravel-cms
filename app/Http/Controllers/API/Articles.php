@@ -31,7 +31,7 @@ class Articles extends BaseController
      */
     public function store(Request $request)
     {
-        //
+        Article::create($request->all());
     }
 
     /**

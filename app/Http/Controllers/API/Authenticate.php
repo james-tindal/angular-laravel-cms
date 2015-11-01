@@ -9,12 +9,6 @@ use JWTAuth;
 
 class Authenticate extends Controller
 {
-
-    public function index()
-    {
-        // TODO: show users
-    }
-
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');

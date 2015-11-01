@@ -27,13 +27,6 @@ Route::group(['prefix' => 'member-area'], function() {
 
 Route::get('/admin', 'Pages@admin');
 
-//Route::group(['prefix' => 'api', 'namespace' => 'api'], function() {
-//    Route::resource('articles', 'Articles');
-//    Route::resource('enquiries', 'Enquiries');
-//    Route::resource('events', 'Events');
-//    Route::resource('requests', 'MemberRequests');
-//});
-
 $api = app('Dingo\Api\Routing\Router');
 app('Dingo\Api\Transformer\Factory')->register('Article', '\HLS\Transformers\ArticleTransformer');
 

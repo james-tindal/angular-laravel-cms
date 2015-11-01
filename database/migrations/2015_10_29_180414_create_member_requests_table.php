@@ -19,12 +19,12 @@ class CreateMemberRequestsTable extends Migration
             $table->string('other-salutation')->nullable;
             $table->string('name');
             $table->string('email');
-            $table->string('phone-number');
-            $table->string('job-title');
-            $table->string('company-name');
+            $table->string('phone_number');
+            $table->string('job_title');
+            $table->string('company_name');
             $table->string('comment');
-            $table->boolean('archived');
             $table->timestamp('date');
+            $table->boolean('archived');
             $table->timestamps();
         });
     }

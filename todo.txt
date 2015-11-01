@@ -1,27 +1,24 @@
-
-
-
 //Need to add categories to events.
 //event-cat route, view, migration, model, factory, seeder
 //training needs own model without cats
-
 paginate events, news, articles
-if it's easy
-
-otherwise 
-
-make an angular app that just CRUDs articles.
-with authentication.
-Also display Enquiries and Member Requests.
-
-first. api articles. then angular
+//--------------------------------
 
 
 
 
 
-39 hours
-9:30pm
+
+Make admin app look different. Floating box for login. No box if already logged in.
+
+
+
+
+
+
+
+40.5 hours
+
 
 mysql -hjw0ch9vofhcajqg7.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -us8vck84fsx34cw8e -puoqbv5fu3b9j9zt0
 use emgnzrnkds1lnf8s;
