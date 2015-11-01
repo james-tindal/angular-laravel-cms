@@ -14,13 +14,14 @@ make an angular app that just CRUDs articles.
 with authentication.
 Also display Enquiries and Member Requests.
 
+first. api articles. then angular
 
 
 
 
 
-
-30 hours
+39 hours
+9:30pm
 
 mysql -hjw0ch9vofhcajqg7.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -us8vck84fsx34cw8e -puoqbv5fu3b9j9zt0
 use emgnzrnkds1lnf8s;

@@ -23,7 +23,8 @@
         <h3>Related articles</h3>
         @foreach($related as $rel)
             <div class="related-article">
-                <p><a href="{{ url('news') }}/{{ $rel->slug }}">{{ $rel->title }}</a> - {{ $rel->date }}</p>
+                <span>{{ $rel->date }}</span>
+                <p><a href="{{ url('news') }}/{{ $rel->slug }}">{{ $rel->title }}</a></p>
             </div>
         @endforeach
     </div>

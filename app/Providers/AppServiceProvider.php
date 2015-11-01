@@ -1,6 +1,4 @@
-<?php
-
-namespace HLS\Providers;
+<?php namespace HLS\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
