@@ -27,18 +27,6 @@ class Article extends Model implements SluggableInterface
 
     protected $dates = ['published_at'];
 
-    public function scopePublished($query)
-    {
-        $query->where('published_at', '<=', Carbon::now())->where('archived', false);
-    }
-
-    public function setPublishedAtAttribute($date)
-    {
-        $this->attributes['published_at'] = Carbon::parse($date);
-    }
-
-
-
     /**
      * Get the categories associated with the given article
      *
@@ -47,6 +35,16 @@ class Article extends Model implements SluggableInterface
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function scopePublished($query)
+    {
+        $query->where('published_at', '<=', Carbon::now())->where('archived', false);
+    }
+
+    public function setPublishedAtAttribute($date)
+    {
+        $this->attributes['published_at'] = Carbon::parse($date);
     }
 
 }

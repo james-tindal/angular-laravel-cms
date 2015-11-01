@@ -13,9 +13,7 @@ Route::get('/events', 'Events@events');
 Route::get('/events/{slug}', 'Events@event');
 Route::get('/past-events', 'Events@pastEvents');
 Route::get('/training', 'Events@training');
-Route::get('/angular', function() {
-    return view('pages.angular');
-});
+
 
 Route::get('/become-a-member', 'Pages@becomeAMember');
 Route::post('/become-a-member', 'Pages@postBecomeAMember');
@@ -29,12 +27,27 @@ Route::group(['prefix' => 'member-area'], function() {
 
 Route::get('/admin', 'Pages@admin');
 
-Route::group(['prefix' => 'api', 'namespace' => 'api'], function() {
-    Route::resource('articles', 'Articles');
-    Route::resource('enquiries', 'Enquiries');
-    Route::resource('events', 'Events');
-    Route::resource('requests', 'MemberRequests');
+//Route::group(['prefix' => 'api', 'namespace' => 'api'], function() {
+//    Route::resource('articles', 'Articles');
+//    Route::resource('enquiries', 'Enquiries');
+//    Route::resource('events', 'Events');
+//    Route::resource('requests', 'MemberRequests');
+//});
+
+$api = app('Dingo\Api\Routing\Router');
+app('Dingo\Api\Transformer\Factory')->register('Article', '\HLS\Transformers\ArticleTransformer');
+
+
+$api->version('v1', ['namespace' => 'HLS\Http\Controllers\Api'], function($api) {
+    $api->post('authenticate', 'Authenticate@authenticate');
 });
 
+$api->version('v1', [
+    'namespace' => 'HLS\Http\Controllers\Api',
+    'middleware' => 'api.auth'
+], function ($api) {
+    $api->resource('articles', 'Articles', ['only' => ['index', 'store', 'show', 'delete']]);
+    $api->resource('users', 'Users', ['only' => ['index', 'store', 'show', 'delete']]);
+});
 
 

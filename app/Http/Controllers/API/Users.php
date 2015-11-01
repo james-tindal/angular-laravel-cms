@@ -1,15 +1,13 @@
-<?php
+<?php namespace HLS\Http\Controllers\Api;
 
-namespace HLS\Http\Controllers\Api;
-
-use HLS\Article;
-use HLS\Http\Transformers\ArticleTransformer;
+use HLS\Http\Transformers\UserTransformer;
+use HLS\User;
 use Illuminate\Http\Request;
 
 use HLS\Http\Requests;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-class Articles extends BaseController
+class Users extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,9 @@ class Articles extends BaseController
      */
     public function index()
     {
-        $articles = Article::all();
+        $users = User::all();
 
-        return $this->collection($articles, new ArticleTransformer);
+        return $this->collection($users, new UserTransformer);
     }
 
     /**
@@ -42,13 +40,13 @@ class Articles extends BaseController
      */
     public function show($slugOrId)
     {
-        $article = Article::findBySlugOrId($slugOrId);
+        $user = User::findById($slugOrId);
 
-        if (! $article) {
+        if (! $user) {
             throw new NotFoundHttpException();
         }
 
-        return $this->item($article, new ArticleTransformer);
+        return $this->item($user, new UserTransformer);
     }
 
     public function update(Request $request, $id)

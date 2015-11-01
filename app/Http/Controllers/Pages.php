@@ -142,7 +142,7 @@ class Pages extends Controller
      */
     public function admin()
     {
-        return view('admin.index');
+        return view('pages.admin');
     }
 
     protected function getLatestArticles()
@@ -174,6 +174,9 @@ class Pages extends Controller
                 $related[] = $article;
             }
         }
+        $related->each(function($article) {
+            $article->date = $article->published_at->format('jS F Y');
+        });
 
         return $related;
     }
