@@ -4,6 +4,7 @@ namespace HLS\Http\Controllers\api;
 
 use HLS\MemberRequest;
 use Illuminate\Http\Request;
+
 use HLS\Http\Requests;
 use HLS\Http\Controllers\Controller;
 
@@ -17,16 +18,6 @@ class MemberRequests extends Controller
     public function index()
     {
         return MemberRequest::latest('date')->get();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -47,17 +38,6 @@ class MemberRequests extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }
