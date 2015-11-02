@@ -9,7 +9,10 @@
             <div class="form-group">
                 <input type="password" class="form-control" placeholder="Password" ng-model="auth.password">
             </div>
-            <button class="btn btn-primary" ng-click="auth.login()">Submit</button>
+            <button class="btn btn-primary" ng-click="auth.login()">
+                <span ng-if="!auth.processing">Login</span>
+                <span ng-if="auth.processing" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span>
+            </button></button>
             <br><br>
             <div class="alert alert-danger" ng-if="auth.error">
                 <strong>There was an error: </strong> {{auth.error}}

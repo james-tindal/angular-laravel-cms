@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container col-lg-10 col-lg-offset-1">
 
     <div class="page-header">
         <h2>Hertfordshire Law Society
@@ -16,16 +16,16 @@
             </tr>
         </thead>
         <tbody ng-repeat="article in articles.articles">
-            <tr ui-sref="article">
+            <tr ui-sref="edit-article({ id: article.id })">
                 <td>{{article.title}}</td>
-                <td>{{article.date}}</td>
+                <td>{{article.published_at}}</td>
                 <td>{{article.brief}}</td>
             </tr>
         </tbody>
     </table>
 
     <div class="alert alert-danger" ng-if="articles.error">
-        <strong>There was an error: </strong> {{user.error.message}}
+        <strong>There was an error: </strong> {{articles.error.message}}
     </div>
 
 </div>

@@ -51,9 +51,24 @@ class Articles extends BaseController
         return $this->item($article, new ArticleTransformer);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $slugOrId)
     {
-        //
+        $article = Article::findBySlugOrId($slugOrId);
+
+        if (! $article) {
+            throw new NotFoundHttpException();
+        }
+
+        $article->update([
+            'title' => $request['title'],
+            'brief' => $request['brief'],
+            'extended' => $request['extended'],
+            'image_url' => $request['image_url'],
+            'archived' => $request['archived'],
+            'published_at' => $request['published_at']
+        ]);
+
+        return response()->json(['message' => 'Article updated.']);
     }
 
     /**
