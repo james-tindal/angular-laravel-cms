@@ -4,9 +4,10 @@
   'use strict';
 
   angular
-    .module('authApp')
+    .module('app')
     .controller('AuthController', AuthController);
 
+  AuthController.$inject = ['$auth', '$state'];
   function AuthController($auth, $state) {
 
     var vm = this;
