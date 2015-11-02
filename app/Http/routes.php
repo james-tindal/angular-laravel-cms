@@ -39,8 +39,8 @@ $api->version('v1', [
     'namespace' => 'HLS\Http\Controllers\Api',
     'middleware' => 'api.auth'
 ], function ($api) {
-    $api->resource('articles', 'Articles', ['only' => ['index', 'store', 'show', 'delete']]);
-    $api->resource('users', 'Users', ['only' => ['index', 'store', 'show', 'delete']]);
+    $api->resource('articles', 'Articles', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+    $api->resource('users', 'Users', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
 });
 
 
