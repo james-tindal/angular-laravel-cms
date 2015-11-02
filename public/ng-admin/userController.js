@@ -4,7 +4,7 @@
   'use strict';
 
   angular
-    .module('authApp')
+    .module('app')
     .controller('UserController', UserController);
 
   function UserController($http) {

@@ -6,19 +6,18 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/admin.css">
 </head>
-<body ng-app="authApp">
+<body ng-app="app">
 
-    <div class="container">
-        <div ui-view></div>
-    </div>
+    <div ui-view></div>
 
 </body>
 
 <script src="{{ asset('js/vendor/angular.min.js') }}"></script>
 <script src="{{ asset('js/vendor/angular-ui-router.min.js') }}"></script>
 <script src="{{ asset('js/vendor/satellizer.min.js') }}"></script>
-<script src="{{ asset('js/admin/app.js') }}"></script>
-<script src="{{ asset('js/admin/authController.js') }}"></script>
-<script src="{{ asset('js/admin/userController.js') }}"></script>
+<script src="{{ asset('ng-admin/app.js') }}"></script>
+<script src="{{ asset('ng-admin/app.routes.js') }}"></script>
+<script src="{{ asset('ng-admin/authController.js') }}"></script>
+<script src="{{ asset('ng-admin/userController.js') }}"></script>
 
 </html>
