@@ -4,17 +4,17 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.auth')
     .controller('AuthController', AuthController);
 
   AuthController.$inject = ['$auth', '$state'];
   function AuthController($auth, $state) {
-
     var vm = this;
 
+    vm.login = login;
     vm.error;
 
-    vm.login = function() {
+    function login() {
 
       var credentials = {
         email: vm.email,
@@ -25,7 +25,7 @@
       $auth.login(credentials).then(function(data) {
 
         // If login is successful, redirect to the users state
-        $state.go('users', {});
+        $state.go('articles', {});
 
       }).catch(function(error) {
         vm.error = error.data.error;

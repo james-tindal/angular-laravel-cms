@@ -5,7 +5,9 @@
 
   angular
     .module('app', [
-      'app.routes',
+      'app.auth',
+
+      'ui.router',
       'satellizer'
     ])
     .config(configure);

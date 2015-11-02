@@ -55,9 +55,9 @@ $factory->define(HLS\MemberRequest::class, function (Faker\Generator $faker) {
         'salutation' => rand(0, 6),
         'name' => $faker->name,
         'email' => $faker->email,
-        'job-title' => $faker->catchPhrase,
-        'company-name' => $faker->company,
-        'phone-number' => $faker->phoneNumber,
+        'job_title' => $faker->catchPhrase,
+        'company_name' => $faker->company,
+        'phone_number' => $faker->phoneNumber,
         'comment' => $faker->realText(50),
     ];
 });
