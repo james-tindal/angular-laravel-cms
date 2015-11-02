@@ -22,14 +22,14 @@ class UsersSeeder extends Seeder
         User::create([
             'administrator' => true,
             'name' => 'Frank Martin',
-            'email' => 'frank@digitalresults.com',
+            'email' => 'frank.martin@digital-results.com',
             'password' => bcrypt('password')
         ]);
 
         User::create([
             'administrator' => true,
             'name' => 'Ben Brown',
-            'email' => 'benbrown@hotmail.com',
+            'email' => '3en.brown@gmail.com',
             'password' => bcrypt('password')
         ]);
 

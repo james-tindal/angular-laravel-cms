@@ -1,0 +1,31 @@
+<div class="container">
+
+    <div class="page-header">
+        <h2>Hertfordshire Law Society
+            <small>Welcome</small>
+        </h2>
+    </div>
+
+    <h3>Articles</h3>
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Published</th>
+                <th>Brief Content</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="article in articles.articles">
+            <tr ui-sref="article">
+                <td>{{article.title}}</td>
+                <td>{{article.date}}</td>
+                <td>{{article.brief}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="alert alert-danger" ng-if="articles.error">
+        <strong>There was an error: </strong> {{user.error.message}}
+    </div>
+
+</div>

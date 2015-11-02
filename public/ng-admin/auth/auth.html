@@ -10,6 +10,7 @@
                 <input type="password" class="form-control" placeholder="Password" ng-model="auth.password">
             </div>
             <button class="btn btn-primary" ng-click="auth.login()">Submit</button>
+            <br><br>
             <div class="alert alert-danger" ng-if="auth.error">
                 <strong>There was an error: </strong> {{auth.error}}
             </div>

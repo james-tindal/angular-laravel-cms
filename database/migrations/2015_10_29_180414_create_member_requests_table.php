@@ -16,7 +16,7 @@ class CreateMemberRequestsTable extends Migration
             $table->increments('id');
             $table->enum('salutation',
                 ['Mr', 'Mrs', 'Miss', 'Ms', 'Dr', 'Prof', 'Rev', 'Other']);
-            $table->string('other-salutation')->nullable;
+            $table->string('other_salutation')->nullable;
             $table->string('name');
             $table->string('email');
             $table->string('phone_number');
