@@ -8,6 +8,7 @@
       'app.auth',
 
       'ui.router',
+      'ui.bootstrap',
       'satellizer'
     ])
     .config(configure);

@@ -44,7 +44,9 @@ class Pages extends Controller
      */
     public function news()
     {
-        $articles = $this->getLatestArticles()->take(7);
+        $articles = $this->getLatestArticles()->filter(function($article) {
+            return ! $article->archived;
+        });
 
         $categories = Category::all();
 
