@@ -27,6 +27,11 @@
         templateUrl: 'ng-admin/articles/all.html',
         controller: 'ArticlesController as articles'
       })
+      .state('create-article', {
+        url: '/articles/create',
+        templateUrl: 'ng-admin/articles/create.html',
+        controller: 'ArticlesController as article'
+      })
       .state('edit-article', {
         url: '/articles/{id}',
         templateUrl: 'ng-admin/articles/edit.html',

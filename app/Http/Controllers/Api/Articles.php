@@ -2,6 +2,7 @@
 
 namespace HLS\Http\Controllers\Api;
 
+use Carbon\Carbon;
 use HLS\Article;
 use HLS\Http\Transformers\ArticleTransformer;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class Articles extends BaseController
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::latest('published_at')->get();
 
         return $this->collection($articles, new ArticleTransformer);
     }
@@ -31,7 +32,15 @@ class Articles extends BaseController
      */
     public function store(Request $request)
     {
-        Article::create($request->all());
+        Article::create([
+            'title' => $request['title'],
+            'brief' => $request['brief'],
+            'extended' => $request['extended'],
+            'image_url' => $request['image_url'],
+            'archived' => (boolean) $request['archived'],
+            'published_at' => Carbon::now()
+        ]);
+
     }
 
     /**
