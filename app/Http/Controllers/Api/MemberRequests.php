@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use HLS\Http\Requests;
 use HLS\Http\Controllers\Controller;
 
-class MemberRequests extends Controller
+class MemberRequests extends BaseController
 {
     /**
      * Display a listing of the resource.

@@ -10,7 +10,7 @@ $factory->define(HLS\Article::class, function (Faker\Generator $faker) {
         'brief' => $faker->text(300),
         'extended' => $faker->text(2500),
         'published_at' => Carbon::createFromTimeStamp( $faker->dateTimeBetween( '-1 year' )->getTimestamp() ),
-        'image_url' => rand(0,1) ? 'http://lorempixel.com/412/' . rand(160, 460) . '/business' : null
+        'image_url' => rand(0,2) ? 'http://lorempixel.com/412/' . rand(160, 460) . '/business' : null
     ];
 });
 
