@@ -17,9 +17,10 @@
       extended: '',
       archived: 0
     };
-    vm.processingUpdate = false;
+    vm.processing = false;
     vm.error;
     vm.success;
+    vm.disabled = false;
 
     vm.update = update;
     vm.create = create;
@@ -34,36 +35,52 @@
 
 
     function update() {
-      vm.processingUpdate = true;
+      if( vm.article.title == '' ) {
+        vm.error = {'message': 'Article must have a title.'};
+        $timeout(function() {
+          vm.error = false;
+        }, 6000);
+        return
+      }
+      vm.processing = true;
+
       $http.put('api/articles/' + $stateParams.id, vm.article).success(function(response) {
-        vm.processingUpdate = false;
+        vm.processing = false;
         vm.error = false;
         vm.success = true;
         $timeout(function() {
           vm.success = false;
         }, 6000);
       }).error(function(error) {
-        vm.processingUpdate = false;
+        vm.processing = false;
         vm.error = error;
         vm.success = false;
       });
     }
 
     function create() {
-      vm.processingUpdate = true;
+      if( vm.article.title == '' ) {
+        vm.error = {'message': 'Article must have a title.'};
+        $timeout(function() {
+          vm.error = false;
+        }, 6000);
+        return
+      }
+      vm.processing = true;
+
       $http.post('api/articles', vm.article).success(function(response) {
-        vm.processingUpdate = false;
+        vm.processing = false;
         vm.error = false;
         vm.success = true;
         console.log(response);
 
         $timeout(function() {
-          vm.success = false;
-        }, 6000);
+          $state.go('articles')
+        }, 800);
       }).error(function(error) {
         console.log(error);
 
-        vm.processingUpdate = false;
+        vm.processing = false;
         vm.error = error;
         vm.success = false;
       });

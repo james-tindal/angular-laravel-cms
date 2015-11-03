@@ -50,9 +50,9 @@
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                         <button class="btn btn-default" ui-sref="articles">Cancel</button>
-                        <button class="btn btn-primary btn-create" ng-click="article.create()">
-                            <span ng-if="!article.processingUpdate">Create</span>
-                            <span ng-if="article.processingUpdate" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span>
+                        <button class="btn btn-primary btn-create" ng-click="article.create()" ng-disabled="article.processing">
+                            <span ng-if="!article.processing">Create</span>
+                            <span ng-if="article.processing" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span>
                         </button>
                     </div>
                 </div>

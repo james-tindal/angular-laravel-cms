@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
     <link rel="stylesheet" href="/css/admin.css">
 
-    {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>--}}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 </head>
 <body ng-app="app">
 
@@ -18,6 +19,7 @@
 <script src="{{ asset('js/vendor/angular.min.js') }}"></script>
 <script src="{{ asset('js/vendor/angular-ui-router.min.js') }}"></script>
 <script src="{{ asset('js/vendor/ui-bootstrap-tpls.min.js') }}"></script>
+<script src="{{ asset('js/vendor/satellizer.min.js') }}"></script>
 <script src="{{ asset('js/vendor/satellizer.min.js') }}"></script>
 <script src="{{ asset('ng-admin/app.js') }}"></script>
 <script src="{{ asset('ng-admin/app.routes.js') }}"></script>
