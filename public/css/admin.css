@@ -14,7 +14,11 @@ tbody {
     cursor: pointer;
 }
 
-.btn-primary {
+.btn-update {
+    width: 85px;
+}
+
+.btn-create {
     width: 85px;
 }
 
