@@ -51,8 +51,8 @@
                     <div class="col-lg-10 col-lg-offset-2">
                         <button class="btn btn-default" ui-sref="articles">Cancel</button>
                         <button class="btn btn-primary btn-update" ng-click="article.update()">
-                            <span ng-if="!article.processingUpdate">Update</span>
-                            <span ng-if="article.processingUpdate" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span>
+                            <span ng-if="!article.processing">Update</span>
+                            <span ng-if="article.processing" class="spinner"><span class="glyphicon glyphicon-repeat"></span></span>
                         </button>
                     </div>
                 </div>

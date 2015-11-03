@@ -24,8 +24,8 @@ paginate api (less important)
 40.5 hours
 
 
-mysql -hjw0ch9vofhcajqg7.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -us8vck84fsx34cw8e -puoqbv5fu3b9j9zt0
-use emgnzrnkds1lnf8s;
+mysql -hsql4.freemysqlhosting.net -usql495244 -pwE9%hJ9!
+use sql495244;
 
 php artisan migrate:rollback
 php artisan migrate:refresh --seed
