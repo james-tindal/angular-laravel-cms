@@ -8,22 +8,6 @@ paginate events, news, articles
 
 
 
-
-Make admin app look different. Floating box for login. No box if already logged in. -No auth route
-
-read mean machine to find out how to stay logged in etc.
-use bootstrap to design other pages
-
-CRUD articles and you're done.
-
-
-paginate api (less important)
-
-
-
-40.5 hours
-
-
 mysql -hsql4.freemysqlhosting.net -usql495244 -pwE9%hJ9!
 use sql495244;
 
