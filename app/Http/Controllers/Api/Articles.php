@@ -88,6 +88,6 @@ class Articles extends BaseController
      */
     public function destroy($id)
     {
-        //
+        Article::findBySlugOrIdOrFail($id)->delete();
     }
 }
