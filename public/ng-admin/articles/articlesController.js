@@ -78,7 +78,7 @@
 
         $timeout(function() {
           $state.go('articles')
-        }, 2000);
+        }, 1000);
       }).error(function(error) {
         console.log(error);
 
