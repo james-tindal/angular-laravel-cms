@@ -25,7 +25,7 @@
 <script src="{{ asset('ng-admin/app.routes.js') }}"></script>
 <script src="{{ asset('ng-admin/auth/auth.module.js') }}"></script>
 <script src="{{ asset('ng-admin/auth/auth.controller.js') }}"></script>
-<script src="{{ asset('ng-admin/userController.js') }}"></script>
+<script src="{{ asset('ng-admin/users/users.controller.js') }}"></script>
 <script src="{{ asset('ng-admin/articles/articlesController.js') }}"></script>
 
 </html>

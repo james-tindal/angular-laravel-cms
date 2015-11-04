@@ -42,7 +42,7 @@ class Pages extends Controller
      */
     public function news()
     {
-        $articles = Article::latest('published_at')->published()->where('archived', false)->paginate(5);
+        $articles = Article::latest('published_at')->published()->paginate(5);
 
         foreach($articles as $article) {
             $article->date = $article->published_at->format('d-m-Y');

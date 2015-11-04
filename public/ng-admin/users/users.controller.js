@@ -5,9 +5,9 @@
 
   angular
     .module('app')
-    .controller('UserController', UserController);
+    .controller('UsersController', UsersController);
 
-  function UserController($http) {
+  function UsersController($http) {
 
     var vm = this;
 
