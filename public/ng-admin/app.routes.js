@@ -19,8 +19,8 @@
       })
       .state('users', {
         url: '/users',
-        templateUrl: 'ng-admin/views/user.html',
-        controller: 'UserController as user'
+        templateUrl: 'ng-admin/users/users.html',
+        controller: 'UsersController as users'
       })
       .state('articles', {
         url: '/articles',

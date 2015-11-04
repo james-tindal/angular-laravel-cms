@@ -14,10 +14,12 @@ class Events extends Controller
     public function index()
     {
         $events = Event::latest('event_date')
-            ->where('training', false)->get();
-        $events->each(function($event) {
+            ->where('training', false)->paginate(4);
+
+        foreach($events as $event) {
             $event->date = $event->event_date->format('d-m-Y');
-        });
+        }
+
 
         return view('pages.events-and-training', compact('events'));
     }

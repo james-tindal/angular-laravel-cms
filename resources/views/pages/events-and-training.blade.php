@@ -35,4 +35,8 @@
               </section>
           @endforeach
       </div>
+
+      <div class="pager">
+          {!! $events->render() !!}
+      </div>
 @endsection
