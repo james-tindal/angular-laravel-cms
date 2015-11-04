@@ -36,4 +36,8 @@
             </ul>
         </nav>
     @endif
+
+    <div class="pager">
+        {!! $articles->render() !!}
+    </div>
 @endsection

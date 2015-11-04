@@ -1,6 +1,4 @@
-<?php
-
-namespace HLS\Http\Controllers;
+<?php namespace HLS\Http\Controllers;
 
 use Carbon\Carbon;
 use HLS\Article;
@@ -21,7 +19,7 @@ class Pages extends Controller
      */
     public function index()
     {
-        $articles = $this->getLatestArticles()->take(2);
+        $articles = $this->getPaginatedArticles()->take(2);
 
         return view('pages.index', compact('articles'));
     }
@@ -44,9 +42,11 @@ class Pages extends Controller
      */
     public function news()
     {
-        $articles = $this->getLatestArticles()->filter(function($article) {
-            return ! $article->archived;
-        });
+        $articles = Article::latest('published_at')->published()->where('archived', false)->paginate(5);
+
+        foreach($articles as $article) {
+            $article->date = $article->published_at->format('d-m-Y');
+        }
 
         $categories = Category::all();
 
@@ -147,9 +147,9 @@ class Pages extends Controller
         return view('pages.admin');
     }
 
-    protected function getLatestArticles()
+    protected function getPaginatedArticles()
     {
-        $articles = Article::latest('published_at')->published()->get()->each(function ($article) {
+        $articles = Article::latest('published_at')->published()->paginate(5)->each(function ($article) {
             $article->date = $article->published_at->format('d-m-Y');
         });
 
@@ -161,22 +161,17 @@ class Pages extends Controller
         // Get IDs of categories on this article
         $catIds = $article->categories->lists('id');
 
-        // Get IDs of articles in those categories
-        $relatedIds = [];
+        $related = new Collection();
         foreach ($catIds as $id) {
-            $relatedIds = array_merge($relatedIds, Category::findOrFail($id)->articles->lists('id')->toArray());
-            $relatedIds = array_unique($relatedIds);
+            $related = $related->merge(Category::findOrFail($id)->articles);
         }
 
-        // Get articles by ID
-        $latest = $this->getLatestArticles();
-        $related = new Collection();
-        foreach ($latest as $article) {
-            if (in_array($article->id, $relatedIds)) {
-                $related[] = $article;
-            }
-        }
-        $related->each(function($article) {
+        $related = $related->filter(function($article) {
+            return $article->published_at <= Carbon::now()
+            && $article->archived == false;
+        })->
+        sortByDesc('published_at')->
+        each(function($article) {
             $article->date = $article->published_at->format('jS F Y');
         });
 
