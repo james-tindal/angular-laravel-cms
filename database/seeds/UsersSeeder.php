@@ -28,8 +28,8 @@ class UsersSeeder extends Seeder
 
         User::create([
             'administrator' => true,
-            'name' => 'Ben Brown',
-            'email' => '3en.brown@gmail.com',
+            'name' => 'ITVET',
+            'email' => 'itvet@itvet.co.uk',
             'password' => bcrypt('password')
         ]);
 
