@@ -28,10 +28,11 @@ class Events extends Controller
     {
         $events = Event::latest('event_date')
             ->where('event_date', '>=', Carbon::Now())
-            ->where('training', true)->get();
-        $events->each(function($event) {
+            ->where('training', true)->paginate(4);
+
+        foreach($events as $event) {
             $event->date = $event->event_date->format('d-m-Y');
-        });
+        }
 
         return view('pages.events-and-training', compact('events'));
     }
@@ -40,22 +41,24 @@ class Events extends Controller
     {
         $events = Event::latest('event_date')
             ->where('event_date', '>=', Carbon::Now())
-            ->where('training', false)->get();
-        $events->each(function($event) {
+            ->where('training', false)->paginate(4);
+
+        foreach($events as $event) {
             $event->date = $event->event_date->format('d-m-Y');
-        });
+        }
 
         return view('pages.events-and-training', compact('events'));
-    }
+    } 
 
     public function pastEvents()
     {
         $events = Event::latest('event_date')
             ->where('event_date', '<=', Carbon::Now())
-            ->where('training', false)->get();
-        $events->each(function($event) {
+            ->where('training', false)->paginate(4);
+
+        foreach($events as $event) {
             $event->date = $event->event_date->format('d-m-Y');
-        });
+        }
 
         return view('pages.events-and-training', compact('events'));
     }

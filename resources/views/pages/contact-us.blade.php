@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title', 'Hertfordshire Law Society - Contact Us')
-@section('foot','<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
-<script type="text/javascript" src="js/contact-us.js"></script>')
+{{--@section('foot','<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>--}}
+{{--<script type="text/javascript" src="js/contact-us.js"></script>')--}}
 @section('main')
 <h1>Contact Us</h1>
 <div class="contact-us">
