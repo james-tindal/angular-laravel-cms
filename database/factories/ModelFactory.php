@@ -41,7 +41,7 @@ $factory->define(HLS\Event::class, function (Faker\Generator $faker) {
         'title' => $faker->sentence(5),
         'brief' => $faker->text(300),
         'extended' => $faker->text(2500),
-        'event_date' => Carbon::createFromTimeStamp( $faker->dateTimeBetween( '-1 year', '+1 year' )->getTimestamp() ),
+        'date' => Carbon::createFromTimeStamp( $faker->dateTimeBetween( '-1 year', '+1 year' )->getTimestamp() ),
         'image_url' => 'http://lorempixel.com/440/337/' . (rand(0,1) ? 'business' : 'city'),
         'training' => rand(1,3) == 1,
     ];
