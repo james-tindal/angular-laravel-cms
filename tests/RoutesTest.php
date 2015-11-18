@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class RoutesTest extends TestCase
 {
     /** @test */
-    public function it_gets_index_view()
+    public function get_index_view()
     {
         $this->visit('/')
             ->see('<h1>Supporting Solicitors Across Hertfordshire</h1>');
@@ -21,14 +21,14 @@ class RoutesTest extends TestCase
 //    }
 
     /** @test */
-    public function it_gets_about_us_view()
+    public function get_about_us_view()
     {
         $this->visit('/about-us')
             ->see('<h1>The professional society of local solicitors</h1>');
     }
 
     /** @test */
-    public function it_gets_news_view()
+    public function get_news_view()
     {
         $this->visit('/news')
             ->see('<h1>Latest News</h1>');
@@ -37,9 +37,30 @@ class RoutesTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_events_view()
+    public function get_events_index()
     {
         $this->visit('/events-and-training')
+            ->see('<h1>Events <span class="amp">&amp;</span> Training</h1>');
+    }
+
+    /** @test */
+    public function get_training_view()
+    {
+        $this->visit('/training')
+            ->see('<h1>Events <span class="amp">&amp;</span> Training</h1>');
+    }
+
+    /** @test */
+    public function get_upcoming_events()
+    {
+        $this->visit('/events')
+            ->see('<h1>Events <span class="amp">&amp;</span> Training</h1>');
+    }
+
+    /** @test */
+    public function get_past_events()
+    {
+        $this->visit('/past-events')
             ->see('<h1>Events <span class="amp">&amp;</span> Training</h1>');
     }
 
