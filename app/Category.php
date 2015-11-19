@@ -2,6 +2,7 @@
 
 namespace HLS;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -23,5 +24,19 @@ class Category extends Model
     public static function findByNameOrFail($name)
     {
         return self::whereName($name)->firstOrFail();
+    }
+
+    public static function publishedArticles($name)
+    {
+        return self::findByNameOrFail($name)
+            ->articles
+            ->filter(function ($article) {
+                return $article->published_at <= Carbon::now();
+            });
+    }
+
+    public static function collect(Array $ids)
+    {
+
     }
 }

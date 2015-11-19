@@ -5,7 +5,6 @@ use HLS\Article;
 use HLS\Category;
 use HLS\Enquiry;
 use HLS\MemberRequest;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use HLS\Http\Requests;
 use HLS\Http\Controllers\Controller;
@@ -19,7 +18,7 @@ class Pages extends Controller
      */
     public function index()
     {
-        $articles = $this->getPaginatedArticles()->take(2);
+        $articles = Article::index()->take(2);
 
         return view('pages.index', compact('articles'));
     }
@@ -42,11 +41,7 @@ class Pages extends Controller
      */
     public function news()
     {
-        $articles = Article::latest('published_at')->published()->paginate(5);
-
-        foreach($articles as $article) {
-            $article->date = $article->published_at->format('d-m-Y');
-        }
+        $articles = Article::index();
 
         $categories = Category::all();
 
@@ -56,16 +51,16 @@ class Pages extends Controller
     /**
      * Display News page
      *
+     * @param $slug
      * @return \Illuminate\Http\Response
      */
     public function article($slug)
     {
         $article = Article::findBySlugOrFail($slug);
-        $article->date = $article->published_at->format('d-m-Y');
 
-        $related = $this->getRelatedArticles($article);
+        $related = $article->related();
 
-        if ($article->published_at >= Carbon::now()) {
+        if ($article->published_at > Carbon::now()) {
             abort(404);
         }
 
@@ -80,12 +75,7 @@ class Pages extends Controller
      */
     public function category($name)
     {
-        $articles = Category::findByNameOrFail($name)->articles->filter(function ($article) {
-            return $article->published_at <= Carbon::now();
-        })->each(function ($article) {
-            // Add formatted date from published_at
-            $article->date = $article->published_at->format('d-m-Y');
-        });
+        $articles = Category::publishedArticles($name);
 
         $categories = Category::all();
 
@@ -147,34 +137,4 @@ class Pages extends Controller
         return view('pages.admin');
     }
 
-    protected function getPaginatedArticles()
-    {
-        $articles = Article::latest('published_at')->published()->paginate(5)->each(function ($article) {
-            $article->date = $article->published_at->format('d-m-Y');
-        });
-
-        return $articles;
-    }
-
-    protected function getRelatedArticles(Article $article)
-    {
-        // Get IDs of categories on this article
-        $catIds = $article->categories->lists('id');
-
-        $related = new Collection();
-        foreach ($catIds as $id) {
-            $related = $related->merge(Category::findOrFail($id)->articles);
-        }
-
-        $related = $related->filter(function($article) {
-            return $article->published_at <= Carbon::now()
-            && $article->archived == false;
-        })->
-        sortByDesc('published_at')->
-        each(function($article) {
-            $article->date = $article->published_at->format('jS F Y');
-        });
-
-        return $related;
-    }
 }
