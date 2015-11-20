@@ -29,6 +29,11 @@ class Category extends Model implements SluggableInterface
         return $this->belongsToMany(Article::class);
     }
 
+    /**
+     * Get the published articles associated with the given category
+     *
+     * @return Query Builder
+     */
     public function publishedArticles()
     {
         return $this->belongsToMany(Article::class)->published();
