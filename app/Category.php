@@ -2,14 +2,22 @@
 
 namespace HLS;
 
-use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Category extends Model implements SluggableInterface
 {
-    protected $fillable = ['name'];
+    use SluggableTrait;
+
+    protected $fillable = ['name', 'slug'];
 
     protected $dates = ['published_at'];
+
+    protected $sluggable = [
+        'build_from' => 'name',
+        'save_to' => 'slug',
+    ];
 
     /**
      * Get the articles associated with the given category
@@ -21,22 +29,9 @@ class Category extends Model
         return $this->belongsToMany(Article::class);
     }
 
-    public static function findByNameOrFail($name)
+    public function publishedArticles()
     {
-        return self::whereName($name)->firstOrFail();
+        return $this->belongsToMany(Article::class)->published();
     }
 
-    public static function publishedArticles($name)
-    {
-        return self::findByNameOrFail($name)
-            ->articles
-            ->filter(function ($article) {
-                return $article->published_at <= Carbon::now();
-            });
-    }
-
-    public static function collect(Array $ids)
-    {
-
-    }
 }

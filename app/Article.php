@@ -3,6 +3,7 @@
 namespace HLS;
 
 use Carbon\Carbon;
+use HLS\Helpers\Help;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
@@ -38,28 +39,20 @@ class Article extends Model implements SluggableInterface
         return $this->belongsToMany(Category::class);
     }
 
+    /**
+     * Get articles that share a category
+     *
+     * @return Collection|static
+     */
     public function related()
     {
-        // Get IDs of categories on this article
-        $related = $this->categories->lists('id');
-
-        foreach ($related as $i => $id) {
-            $related[$i] = Category::findOrFail($id)->articles;
-        }
-
-        $related = $related->collapse()
-            ->filter(function ($article) {
-                return Carbon::parse($article->published_at) <= Carbon::now()
-                && $article->archived == false;
+        return $this->categories->lists('id')
+            ->map(function ($id) {
+                return Category::findOrFail($id)->publishedArticles;
             })
-            ->sortByDesc('published_at')
-            ->each(function ($article) {
-                $article->published_at_formatted = Carbon::parse($article->published_at)->format('jS F Y');
-            });
-        $related = $related->unique();
-
-//        dd($related);
-        return $related;
+            ->collapse()
+            ->unique()
+            ->sortByDesc('published_at');
     }
 
     public function scopePublished($query)
@@ -72,13 +65,19 @@ class Article extends Model implements SluggableInterface
         $this->attributes['published_at'] = Carbon::parse($date);
     }
 
-    public function getPublishedAtAttribute($date)
-    {
-        return Carbon::parse($date)->format('d-m-Y');
-    }
-
     public static function index()
     {
         return static::latest('published_at')->published()->paginate(5);
+    }
+
+    /**
+     * Find a model by slug or fail.
+     *
+     * @param $slug
+     * @return Model
+     */
+    public static function findPublishedBySlugOrFail($slug)
+    {
+        return self::whereSlug($slug)->published()->firstOrFail();
     }
 }

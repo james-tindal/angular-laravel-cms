@@ -10,7 +10,7 @@
         @endunless
         <header>
             <p>
-                <span @if(sizeof($article->categories) > 0)class="with-categories"@endif>{{ $article->published_at }}</span>
+                <span @if(sizeof($article->categories) > 0)class="with-categories"@endif>{{ $article->published_at->format('d-m-Y') }}</span>
                 @foreach($article->categories as $category)
                     <a href="{{ url('category') }}/{{ $category->name }}">{{ $category->name }}</a>,
                 @endforeach
@@ -23,7 +23,7 @@
         <h3>Related articles</h3>
         @foreach($related as $rel)
             <div class="related-article">
-                <span>{{ $rel->published_at_formatted }}</span>
+                <span>{{ $rel->published_at->format('jS F Y') }}</span>
                 <p><a href="{{ url('news') }}/{{ $rel->slug }}">{{ $rel->title }}</a></p>
             </div>
         @endforeach

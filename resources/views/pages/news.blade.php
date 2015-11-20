@@ -16,7 +16,9 @@
                     <h4>{{ $article->title }}</h4>
 
                     <p>
-                        <span @if(sizeof($article->categories) > 0)class="with-categories"@endif>{{ $article->published_at }}</span>
+                        <span @if(sizeof($article->categories) > 0)class="with-categories"@endif>
+                            {{ $article->published_at->format('d-m-Y') }}
+                        </span>
                         @foreach($article->categories as $category)
                             <a href="{{ url('category') }}/{{ $category->name }}">{{ $category->name }}</a>,
                         @endforeach

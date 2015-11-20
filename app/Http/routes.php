@@ -6,7 +6,7 @@ Route::get('/about-us', 'Pages@aboutUs');
 
 Route::get('/news', 'Pages@news');
 Route::get('/news/{slug}', 'Pages@article');
-Route::get('category/{name}', 'Pages@category');
+Route::get('category/{slug}', 'Pages@category');
 
 Route::get('/events-and-training', 'Events@index');
 Route::get('/events', 'Events@events');
