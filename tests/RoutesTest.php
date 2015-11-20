@@ -8,15 +8,11 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class RoutesTest extends TestCase
 {
-    protected $twoArticles;
-
     public function setUp()
     {
         parent::setUp();
 
         Artisan::call('migrate:refresh');
-
-        $this->twoArticles = factory(Article::class, 2)->create();
     }
 
     /** @test */
@@ -29,10 +25,12 @@ class RoutesTest extends TestCase
     /** @test */
     public function index_shows_two_latest_articles()
     {
+        $twoArticles = factory(Article::class, 2)->create();
+
         $this->visit('/')
-            ->see($this->twoArticles[0]->title)
-            ->see($this->twoArticles[0]->published_at)
-            ->see($this->twoArticles[1]->title);
+            ->see($twoArticles[0]->title)
+            ->see($twoArticles[0]->published_at->format('d-m-Y'))
+            ->see($twoArticles[1]->title);
     }
 
     /** @test */
@@ -45,33 +43,46 @@ class RoutesTest extends TestCase
     /** @test */
     public function get_news_view()
     {
+        $twoArticles = factory(Article::class, 2)->create();
+
         $this->visit('/news')
             ->see('<h1>Latest News</h1>')
-            ->see($this->twoArticles[0]->title)
-            ->see($this->twoArticles[0]->published_at)
-            ->see($this->twoArticles[1]->title);
+            ->see($twoArticles[0]->title)
+            ->see($twoArticles[0]->published_at->format('d-m-Y'))
+            ->see($twoArticles[1]->title);
     }
 
+    // This test is a bit irrelevant. Test differently
     /** @test */
     public function get_single_article_view()
     {
-        $url = '/news/' . $this->twoArticles[0]->slug;
+        $article = factory(Article::class)->create();
+
+        $url = '/news/' . $article->slug;
 
         $this->visit($url)
-            ->see($this->twoArticles[0]->title)
-            ->see($this->twoArticles[0]->extended)
-            ->see($this->twoArticles[0]->published_at);
+            ->see($article->title)
+            ->see($article->extended)
+            ->see($article->published_at->format('d-m-Y'));
     }
 
     /** @test */
     public function get_category_view()
     {
+        // Given a category is associated with a single article
         $category = factory(Category::class)->create();
+        $article =  factory(Article::class)->create();
+        $article->categories()->attach($category);
 
-        $url = '/category/' . $category->name; // Should be slug
-
+        // When the user visits the category route
+        $url = '/category/' . $category->slug;
         $this->visit($url)
-            ->see($category->name);
+        // They should see the category's name
+            ->see($category->name)
+        // They should see the associated article
+            ->see($article->title);
+
+
     }
 
     /** @test */

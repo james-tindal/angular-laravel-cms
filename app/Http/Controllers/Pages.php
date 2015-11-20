@@ -56,13 +56,9 @@ class Pages extends Controller
      */
     public function article($slug)
     {
-        $article = Article::findBySlugOrFail($slug);
+        $article = Article::findPublishedBySlugOrFail($slug);
 
         $related = $article->related();
-
-        if ($article->published_at > Carbon::now()) {
-            abort(404);
-        }
 
         return view('pages.article', compact('article', 'related'));
     }
@@ -70,12 +66,15 @@ class Pages extends Controller
     /**
      * Display all articles in requested category
      *
-     * @param  int $id
+     * @param $slug
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function category($name)
+    public function category($slug)
     {
-        $articles = Category::publishedArticles($name);
+        $name = Category::findBySlugOrFail($slug)->name;
+
+        $articles = Category::findBySlug($slug)->publishedArticles;
 
         $categories = Category::all();
 
