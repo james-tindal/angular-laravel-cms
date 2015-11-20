@@ -8,7 +8,7 @@ class ArticleTest extends PHPUnit_Framework_TestCase
     /** @test */
     function related_returns_related_articles()
     {
-        Artisan::call('migrate:refresh');
+        // Given I don't know how to test it. It's too much work for too little reward at the moment
 
 
     }
@@ -39,6 +39,7 @@ class ArticleTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($dates['past'], $published[0]->published_at, 'Article should be published today');
 
     }
+
 
 
     private function persistThreeArticles($dates)
