@@ -1,30 +1,26 @@
 @extends('layouts.main')
-@section('title', 'Hertfordshire Law Society - ' . $article->title)
+@section('title', 'Hertfordshire Law Society - ' . $title)
 @section('main')
 
-    <h1>{{ $article->title }}</h1>
+    <h1>{{ $title }}</h1>
 
     <div class="latest-news">
-        @unless (is_null($article->image_url))
-            <img src="{{ $article->image_url }}" alt="">
-        @endunless
+        {!! $image !!}
         <header>
             <p>
-                <span @if(sizeof($article->categories) > 0)class="with-categories"@endif>{{ $article->published_at->format('d-m-Y') }}</span>
-                @foreach($article->categories as $category)
-                    <a href="{{ url('category') }}/{{ $category->name }}">{{ $category->name }}</a>,
-                @endforeach
+                <span {!! $withCategories !!}>{{ $published_at->format('d-m-Y') }}</span>
+                {!! $categories !!}
             </p>
         </header>
-        {{ $article->extended }}
+        {{ $content }}
     </div>
 
     <div class="related-articles">
         <h3>Related articles</h3>
-        @foreach($related as $rel)
+        @foreach($related as $a)
             <div class="related-article">
-                <span>{{ $rel->published_at->format('jS F Y') }}</span>
-                <p><a href="{{ url('news') }}/{{ $rel->slug }}">{{ $rel->title }}</a></p>
+                <span>{{ $a->published_at->format('jS F Y') }}</span>
+                <p><a href="{{ url('news/' . $a->slug) }}">{{ $a->title }}</a></p>
             </div>
         @endforeach
     </div>

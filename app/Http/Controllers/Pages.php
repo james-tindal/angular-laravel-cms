@@ -43,9 +43,9 @@ class Pages extends Controller
     {
         $articles = Article::index();
 
-        $categories = Category::all();
+        $categoryList = Category::all()->lists('name');
 
-        return view('pages.news', compact('articles', 'categories'));
+        return view('pages.news', compact('articles', 'categoryList'));
     }
 
     /**

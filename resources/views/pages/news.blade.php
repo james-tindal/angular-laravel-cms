@@ -6,34 +6,15 @@
 
     <div class="latest-news">
         @foreach($articles as $article)
-            <section>
-                @unless (is_null($article->image_url))
-                    <aside>
-                        <img src="{{ $article->image_url }}" alt="">
-                    </aside>
-                @endunless
-                <header>
-                    <h4>{{ $article->title }}</h4>
-
-                    <p>
-                        <span @if(sizeof($article->categories) > 0)class="with-categories"@endif>
-                            {{ $article->published_at->format('d-m-Y') }}
-                        </span>
-                        @foreach($article->categories as $category)
-                            <a href="{{ url('category') }}/{{ $category->name }}">{{ $category->name }}</a>,
-                        @endforeach
-                    </p>
-                </header>
-                <p>{{ $article->brief }} <a href="{{ url('news') }}/{{ $article->slug }}">Read more</a></p>
-            </section>
+            @include('partials.article')
         @endforeach
     </div>
 
-    @if(sizeof($categories) > 0)
+    @if($categoryList)
         <nav class="news-categories">
             <ul>
-                @foreach($categories as $category)
-                    <li><a href="{{ url('category') }}/{{ $category->name }}">{{ $category->name }}</a></li>
+                @foreach($categoryList as $category)
+                    <li><a href="{{ url('category/' . $category) }}">{{ $category }}</a></li>
                 @endforeach
             </ul>
         </nav>
