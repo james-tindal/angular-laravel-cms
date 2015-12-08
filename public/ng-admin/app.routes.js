@@ -36,6 +36,21 @@
         url: '/articles/{id}',
         templateUrl: '/ng-admin/articles/edit.html',
         controller: 'ArticlesController as article'
+      })
+      .state('member-requests', {
+        url: '/articles/{id}',
+        templateUrl: '/ng-admin/articles/edit.html',
+        controller: 'ArticlesController as article'
+      })
+      .state('enquiries', {
+        url: '/articles/{id}',
+        templateUrl: '/ng-admin/articles/edit.html',
+        controller: 'ArticlesController as article'
+      })
+      .state('events', {
+        url: '/articles/{id}',
+        templateUrl: '/ng-admin/articles/edit.html',
+        controller: 'ArticlesController as article'
       });
 
   }
