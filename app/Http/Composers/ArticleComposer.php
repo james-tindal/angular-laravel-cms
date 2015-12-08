@@ -64,7 +64,6 @@ class ArticleComposer
     private function composeSpan(Article $a)
     {
         return $a->categories->isEmpty() ? '' : 'class="with-categories"';
-
     }
 
     /**
