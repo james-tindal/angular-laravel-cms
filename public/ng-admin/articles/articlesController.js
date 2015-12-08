@@ -46,7 +46,7 @@
       }
       vm.processing = true;
 
-      $http.put('api/articles/' + $stateParams.id, vm.article).success(function(response) {
+      $http.put('/api/articles/' + $stateParams.id, vm.article).success(function(response) {
         vm.processing = false;
         vm.error = false;
         vm.success = 'Article updated!';
@@ -70,7 +70,7 @@
       }
       vm.processing = true;
 
-      $http.post('api/articles', vm.article).success(function(response) {
+      $http.post('/api/articles', vm.article).success(function(response) {
         vm.processing = false;
         vm.error = false;
         vm.success = 'Article created!';
@@ -91,7 +91,7 @@
     function destroy() {
       vm.processingDestroy = true;
 
-      $http.delete('api/articles/' + $stateParams.id).success(function(response) {
+      $http.delete('/api/articles/' + $stateParams.id).success(function(response) {
         $('.modal').modal('hide');
         vm.processingDestroy = false;
         vm.error = false;
@@ -115,7 +115,7 @@
 
       // This request will hit the index method in the AuthenticateController
       // on the Laravel side and will return the list of users
-      $http.get('api/articles').success(function(articles) {
+      $http.get('/api/articles').success(function(articles) {
         vm.articles = articles.data;
       }).error(function(error) {
         vm.error = error;
@@ -126,7 +126,7 @@
 
       // This request will hit the index method in the AuthenticateController
       // on the Laravel side and will return the list of users
-      $http.get('api/articles/' + $stateParams.id).success(function(article) {
+      $http.get('/api/articles/' + $stateParams.id).success(function(article) {
         vm.article = article.data;
       }).error(function(error) {
         vm.error = error;

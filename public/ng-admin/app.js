@@ -1,4 +1,3 @@
-
 (function() {
 
   'use strict';
@@ -13,12 +12,17 @@
     ])
     .config(configure);
 
-  function configure($authProvider) {
+  function configure($authProvider, $locationProvider) {
 
-      // Satellizer configuration that specifies which API
-      // route the JWT should be retrieved from
-      $authProvider.loginUrl = '/api/authenticate';
+    // Satellizer configuration that specifies which API
+    // route the JWT should be retrieved from
+    $authProvider.loginUrl = '/api/authenticate';
 
-    }
+    $locationProvider.html5Mode(true);
+
+  }
+
+
+  angular.module('app.auth', []);
 
 })();
