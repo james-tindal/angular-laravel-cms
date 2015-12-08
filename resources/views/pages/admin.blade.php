@@ -12,7 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <base href="/admin/">
 </head>
-<body ng-app="app">
+<body layout="column" ng-app="app">
 
 <div ui-view></div>
 
@@ -27,6 +27,7 @@
 <script src="{{ asset('ng-admin/app.routes.js') }}"></script>
 <script src="{{ asset('ng-admin/auth/auth.controller.js') }}"></script>
 <script src="{{ asset('ng-admin/users/users.controller.js') }}"></script>
-<script src="{{ asset('ng-admin/articles/articlesController.js') }}"></script>
+<script src="{{ asset('ng-admin/articles/articles.controller.js') }}"></script>
+<script src="{{ asset('ng-admin/requests/requests.controller.js') }}"></script>
 
 </html>
