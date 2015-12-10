@@ -1,0 +1,36 @@
+<div class="page-header">
+	<h1>
+		Users
+		<a href="users/create" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus"></span> 
+			New Administrator
+		</a>
+	</h1>
+
+</div>
+
+<div class="jumbotron text-center" ng-show="users.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading Users...</p>
+</div>
+
+<table class="table table-bordered table-striped table-hover" ng-show="users.data">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th class="col-sm-2"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="user in users.data" ng-click="users.editUser(user.id)">
+			<td>{{ user.id }}</td>
+			<td>{{ user.name }}</td>
+			<td>{{ user.email }}</td>
+			<td class="col-sm-2">
+				<a ng-click="users.deleteUser(user.id)" class="btn btn-danger">Delete</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

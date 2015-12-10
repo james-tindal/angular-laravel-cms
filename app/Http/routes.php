@@ -29,11 +29,14 @@ Route::get('/admin', 'Pages@admin');
 Route::get('/admin/{angular}', 'Pages@admin');
 Route::get('/admin/{a}/{b}', 'Pages@admin');
 
+
 $api = app('Dingo\Api\Routing\Router');
 app('Dingo\Api\Transformer\Factory')->register('Article', '\HLS\Transformers\ArticleTransformer');
 
 
-$api->version('v1', ['namespace' => 'HLS\Http\Controllers\Api'], function($api) {
+$api->version('v1', [
+    'namespace' => 'HLS\Http\Controllers\Api'
+], function($api) {
     $api->post('authenticate', 'Authenticate@authenticate');
 });
 

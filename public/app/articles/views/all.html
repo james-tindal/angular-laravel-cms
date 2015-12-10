@@ -1,0 +1,37 @@
+<div class="page-header">
+	<h1>
+		Articles
+		<a href="articles/create" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus"></span> 
+			New Article
+		</a>
+	</h1>
+
+</div>
+
+<div class="jumbotron text-center" ng-show="articles.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading Articles...</p>
+</div>
+
+<table class="table table-bordered table-striped table-hover" ng-show="user.users">
+	<thead>
+		<tr>
+			<th>_id</th>
+			<th>Name</th>
+			<th>Username</th>
+			<th class="col-sm-2"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="article in articles.articles" ng-click="">
+			<td>{{ article.id }}</td>
+			<td>{{ article.name }}</td>
+			<td>{{ article.username }}</td>
+			<td class="col-sm-2">
+				<a ng-href="articles/{{ article.id }}" class="btn btn-danger">Edit</a>
+				<a href="#" ng-click="articles.deleteArticle(article.id)" class="btn btn-primary">Delete</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

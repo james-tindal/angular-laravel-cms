@@ -41,6 +41,7 @@ class Articles extends BaseController
             'published_at' => Carbon::now()
         ]);
 
+        return $this->response->created();
     }
 
     /**

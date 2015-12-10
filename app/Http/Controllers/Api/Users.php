@@ -29,7 +29,14 @@ class Users extends BaseController
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+            'id' => $request['id'],
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'administrator' => true,
+        ]);
+
+        return $user ? $this->response->created() : $this->response->errorInternal();
     }
 
     /**
@@ -38,9 +45,9 @@ class Users extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slugOrId)
+    public function show($id)
     {
-        $user = User::findById($slugOrId);
+        $user = User::findOrFail($id);
 
         if (! $user) {
             throw new NotFoundHttpException();
@@ -51,7 +58,13 @@ class Users extends BaseController
 
     public function update(Request $request, $id)
     {
-        //
+        User::findOrFail($id)->update([
+            'id' => $request['id'],
+            'name' => $request['name'],
+            'email' => $request['email'],
+        ]);
+
+        return $this->response->created();
     }
 
     /**
@@ -62,6 +75,8 @@ class Users extends BaseController
      */
     public function destroy($id)
     {
-        //
+        User::findOrFail($id)->delete();
+
+        return $this->response->created();
     }
 }
