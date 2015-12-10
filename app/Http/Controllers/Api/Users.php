@@ -29,14 +29,14 @@ class Users extends BaseController
      */
     public function store(Request $request)
     {
-        $user = User::create([
+        User::create([
             'id' => $request['id'],
             'name' => $request['name'],
             'email' => $request['email'],
             'administrator' => true,
         ]);
 
-        return $user ? $this->response->created() : $this->response->errorInternal();
+        return $this->response->created();
     }
 
     /**

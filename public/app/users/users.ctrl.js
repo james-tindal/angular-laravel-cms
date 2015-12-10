@@ -10,10 +10,9 @@
     var users = Resource('users', vm, $location);
 
     vm.deleteUser = users.delete;
-    vm.editUser = users.edit;
 
     users.getAll();
 
-  };
+  }
 
 })();

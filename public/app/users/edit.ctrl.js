@@ -10,10 +10,10 @@
     var users = Resource('users', vm, $location);
 
     vm.type = 'edit';
-    vm.save = users.save;
+    vm.save = users.update;
 
     users.getSingle($routeParams.user_id);
 
-  };
+  }
 
 })();

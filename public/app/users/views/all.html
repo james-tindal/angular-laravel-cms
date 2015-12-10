@@ -24,12 +24,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="user in users.data" ng-click="users.editUser(user.id)">
+		<tr ng-repeat="user in users.data">
 			<td>{{ user.id }}</td>
 			<td>{{ user.name }}</td>
 			<td>{{ user.email }}</td>
 			<td class="col-sm-2">
-				<a ng-click="users.deleteUser(user.id)" class="btn btn-danger">Delete</a>
+                <a ng-href="users/{{ user.id }}" class="btn btn-danger">Edit</a>
+                <a ng-click="users.deleteUser(user.id)" class="btn btn-primary">Delete</a>
 			</td>
 		</tr>
 	</tbody>
