@@ -5,9 +5,9 @@
     .module('app.users')
     .controller('usersController', usersController);
 
-  function usersController(Resource, $location) {
+  function usersController(ResourceCtrl, $location) {
     var vm = this;
-    var users = Resource('users', vm, $location);
+    var users = ResourceCtrl('users', vm, $location);
 
     vm.deleteUser = users.delete;
 

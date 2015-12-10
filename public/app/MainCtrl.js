@@ -1,6 +1,6 @@
 angular.module('app')
 
-  .controller('mainController', function ($rootScope, $location, Auth) {
+  .controller('mainCtrl', function ($rootScope, $location, Auth) {
     var vm = this;
 
     vm.doLogin = function () {

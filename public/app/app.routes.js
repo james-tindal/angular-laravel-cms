@@ -13,7 +13,7 @@ angular
       // login page
       .when('/login', {
         templateUrl : '/app/auth/login.html',
-          controller  : 'mainController',
+          controller  : 'mainCtrl',
             controllerAs: 'login'
       })
 
