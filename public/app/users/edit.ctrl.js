@@ -5,9 +5,9 @@
     .module('app.users')
     .controller('userEditController', userEditController);
 
-  function userEditController(Resource, $location, $routeParams) {
+  function userEditController(ResourceCtrl, $location, $routeParams) {
     var vm = this;
-    var users = Resource('users', vm, $location);
+    var users = ResourceCtrl('users', vm, $location);
 
     vm.type = 'edit';
     vm.save = users.update;

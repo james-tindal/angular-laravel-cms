@@ -15,7 +15,7 @@
 
     <!-- JS -->
     <script src="/js/vendor/sprintf.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.18.0/ramda.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.18.0/ramda.min.js"></script>--}}
     <!-- load angular and angular-route via CDN -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
@@ -24,8 +24,9 @@
     <!-- main Angular app files -->
     <script src="/app/app.js"></script>
     <script src="/app/app.routes.js"></script>
-    <script src="/app/main.ctrl.js"></script>
+    <script src="/app/MainCtrl.js"></script>
     <script src="/app/core/Resource.js"></script>
+    <script src="/app/core/ResourceCtrl.js"></script>
 
     <!-- auth -->
     <script src="/app/auth/auth.js"></script>
@@ -43,7 +44,7 @@
     <script src="/app/articles/create.ctrl.js"></script>
 
 </head>
-<body ng-app="app" ng-controller="mainController as main">
+<body ng-app="app" ng-controller="mainCtrl as main">
 
 <!-- NAVBAR -->
 <header>
