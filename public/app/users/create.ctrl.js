@@ -1,27 +1,17 @@
 (function() {
+  'use strict';
+
   angular
     .module('app.users')
     .controller('userCreateController', userCreateController);
 
-
-  function userCreateController(Resource) {
+  function userCreateController(Resource, $location) {
     var vm = this;
+    var users = Resource('users', vm, $location);
 
     vm.type = 'create';
+    vm.save = users.create;
 
-    vm.save = function() {
-      vm.processing = true;
-      vm.message = '';
-
-      Resource('users').create(vm.userData)
-        .success(function(response) {
-          vm.processing = false;
-          vm.userData = {};
-          vm.message = response.message;
-        });
-
-    };
-
-  };
+  }
 
 })();

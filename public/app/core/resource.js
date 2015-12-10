@@ -11,13 +11,11 @@
 
       return {
         getAll: getAll,
-        new: reqNew,
+        create: create,
         delete: del,
         getSingle: getSingle,
-        edit: edit,
-        save: save
+        update: update
       }
-
 
 
       function getAll() {
@@ -27,13 +25,10 @@
         });
       }
 
-      function del() {
-        vm.processing = true;
-        reqDelete(id).success(getAll());
-      }
-
-      function edit(id) {
-        location.path(sprintf('/%s/%s', resource, id))
+      function del(id) {
+        reqDelete(id).success(function () {
+          getAll();
+        });
       }
 
       function getSingle(id) {
@@ -45,11 +40,26 @@
         });
       }
 
-      function save(id) {
+      function update(id) {
         vm.processing = true;
         vm.message = '';
 
-        reqSave(id, vm.data)
+        reqUpdate(id, vm.data)
+          .success(function () {
+            vm.processing = false;
+            location.path('/' + resource);
+          })
+          .error(function (response) {
+            vm.processing = false;
+            vm.message = response.message;
+          });
+      }
+      
+      function create() {
+        vm.processing = true;
+        vm.message = '';
+
+        reqCreate(vm.data)
           .success(function () {
             vm.processing = false;
             location.path('/' + resource);
@@ -67,7 +77,7 @@
         return $http.get('/api/' + resource);
       }
 
-      function reqNew(userData) {
+      function reqCreate(userData) {
         return $http.post('/api/' + resource, userData);
       }
 
@@ -79,7 +89,7 @@
         return $http.get(sprintf('/api/%s/%s', resource, id));
       }
 
-      function reqSave(id, userData) {
+      function reqUpdate(id, userData) {
         return $http.put(sprintf('/api/%s/%s', resource, id), userData);
       }
     }

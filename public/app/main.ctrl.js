@@ -5,7 +5,6 @@ angular.module('app')
 
     vm.doLogin = function () {
       vm.processing = true;
-
       vm.error = '';
 
       Auth.login(vm.loginData.email, vm.loginData.password)
