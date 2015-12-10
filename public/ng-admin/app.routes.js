@@ -9,12 +9,12 @@
   function routes($stateProvider, $urlRouterProvider) {
     // Redirect to the auth state if any other states
     // are requested other than users
+    $urlRouterProvider.otherwise('login');
 
-    $urlRouterProvider.otherwise('');
     $stateProvider
-      .state('auth', {
+      .state('login', {
         url: '/',
-        templateUrl: '/ng-admin/auth/auth.html',
+        templateUrl: '/ng-admin/auth/login.html',
         controller: 'AuthController as auth'
       })
       .state('users', {
@@ -34,23 +34,28 @@
       })
       .state('edit-article', {
         url: '/articles/{id}',
-        templateUrl: '/ng-admin/articles/edit.html',
+        templateUrl: '/ng-admin/articles/single.html',
         controller: 'ArticlesController as article'
       })
       .state('member-requests', {
-        url: '/articles/{id}',
-        templateUrl: '/ng-admin/articles/edit.html',
-        controller: 'ArticlesController as article'
+        url: '/member-requests',
+        templateUrl: '/ng-admin/requests/all.html',
+        controller: 'RequestsController as requests'
       })
-      .state('enquiries', {
-        url: '/articles/{id}',
-        templateUrl: '/ng-admin/articles/edit.html',
-        controller: 'ArticlesController as article'
-      })
-      .state('events', {
-        url: '/articles/{id}',
-        templateUrl: '/ng-admin/articles/edit.html',
-        controller: 'ArticlesController as article'
+      .state('manage-member-request', {
+        url: '/member-request/{$id}',
+        templateUrl: '/ng-admin/requests/single.html',
+        controller: 'RequestsController as requests'
+      //})
+      //.state('enquiries', {
+      //  url: '/articles/{id}',
+      //  templateUrl: '/ng-admin/articles/edit.html',
+      //  controller: 'ArticlesController as article'
+      //})
+      //.state('events', {
+      //  url: '/articles/{id}',
+      //  templateUrl: '/ng-admin/articles/edit.html',
+      //  controller: 'ArticlesController as article'
       });
 
   }

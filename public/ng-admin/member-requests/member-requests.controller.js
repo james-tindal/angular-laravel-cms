@@ -5,13 +5,13 @@
 
   angular
     .module('app')
-    .controller('ArticlesController', ArticlesController);
+    .controller('MemberRequestsController', MemberRequestsController);
 
-  function ArticlesController($http, $state, $stateParams, $timeout) {
+  function MemberRequestsController($http, $state, $stateParams, $timeout) {
     var vm = this;
 
-    vm.articles;
-    vm.article = {
+    vm.requests;
+    vm.request = {
       title: '',
       brief: '',
       extended: '',
@@ -29,10 +29,10 @@
 
 
 
-    if( $state.is('articles') )
-      getArticles();
-    if( $state.is('edit-article') )
-      getArticle();
+    if( $state.is('member-requests') )
+      getMemberRequests();
+    if( $state.is('manage-member-request') )
+      getMemberRequest();
     ////////////////
 
 
@@ -54,34 +54,6 @@
           vm.success = false;
         }, 6000);
       }).error(function(error) {
-        vm.processing = false;
-        vm.error = error;
-        vm.success = false;
-      });
-    }
-
-    function create() {
-      if( vm.article.title == '' ) {
-        vm.error = {'message': 'Article must have a title.'};
-        $timeout(function() {
-          vm.error = false;
-        }, 6000);
-        return
-      }
-      vm.processing = true;
-
-      $http.post('/api/articles', vm.article).success(function(response) {
-        vm.processing = false;
-        vm.error = false;
-        vm.success = 'Article created!';
-        console.log(response);
-
-        $timeout(function() {
-          $state.go('articles')
-        }, 1000);
-      }).error(function(error) {
-        console.log(error);
-
         vm.processing = false;
         vm.error = error;
         vm.success = false;
@@ -111,10 +83,8 @@
       });
     }
 
-    function getArticles() {
+    function getMemberRequests() {
 
-      // This request will hit the index method in the AuthenticateController
-      // on the Laravel side and will return the list of users
       $http.get('/api/articles').success(function(articles) {
         vm.articles = articles.data;
       }).error(function(error) {
@@ -122,7 +92,7 @@
       });
     }
 
-    function getArticle() {
+    function getMemberRequest() {
 
       // This request will hit the index method in the AuthenticateController
       // on the Laravel side and will return the list of users
