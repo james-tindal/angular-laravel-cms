@@ -59,9 +59,8 @@
                 <li><a href="member-requests"><span class="glyphicon glyphicon-user"></span> Member Requests</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
-                <li ng-if="main.loggedIn" class="navbar-text">Hello @{{ main.user.username }}!</li>
-                <li ng-if="main.loggedIn"><a ng-click="main.doLogout()">Logout</a></li>
+                <li class="navbar-text">Hello @{{ main.user.username }}!</li>
+                <li><a ng-click="main.doLogout()">Logout</a></li>
             </ul>
         </div>
     </div>

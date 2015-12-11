@@ -14,23 +14,25 @@
 	<p>Loading Articles...</p>
 </div>
 
-<table class="table table-bordered table-striped table-hover" ng-show="user.users">
+<table class="table table-bordered table-striped table-hover" ng-show="articles.data">
 	<thead>
 		<tr>
-			<th>_id</th>
-			<th>Name</th>
-			<th>Username</th>
+			<th>Title</th>
+			<th>Brief Content</th>
+			<th width="86px">Published</th>
+			<th>Archived</th>
 			<th class="col-sm-2"></th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="article in articles.articles" ng-click="">
-			<td>{{ article.id }}</td>
-			<td>{{ article.name }}</td>
-			<td>{{ article.username }}</td>
+		<tr ng-repeat="article in articles.data">
+			<td>{{ article.title }}</td>
+			<td>{{ article.brief }}</td>
+			<td>{{ article.published_at }}</td>
+			<td><input type="checkbox" ng-model="article.archived" disabled></td>
 			<td class="col-sm-2">
 				<a ng-href="articles/{{ article.id }}" class="btn btn-danger">Edit</a>
-				<a href="#" ng-click="articles.deleteArticle(article.id)" class="btn btn-primary">Delete</a>
+				<a href="#" ng-click="articles.delete(article.id)" class="btn btn-primary">Delete</a>
 			</td>
 		</tr>
 	</tbody>
