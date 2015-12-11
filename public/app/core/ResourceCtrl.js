@@ -6,7 +6,10 @@
     .factory('ResourceCtrl', ResourceCtrl)
 
   function ResourceCtrl(Resource) {
-    return function (name, vm, location) {
+    return function (resource, vm, location) {
+      resource = Resource(resource);
+      vm.processing = true;
+
       return {
         create: create,
         delete: del,
@@ -15,57 +18,66 @@
         update: update
       };
 
-      vm.processing = true;
-
       function create() {
-        vm.processing = true;
         vm.message = '';
 
-        Resource(name).create(vm.data)
+        resource.create(vm.data)
           .success(function () {
-            vm.processing = false;
-            location.path('/' + name);
+            location.path('/' + resource.name);
           })
           .error(function (response) {
-            vm.processing = false;
             vm.message = response.message;
+          })
+          .then(function () {
+            vm.processing = false;
           });
       }
 
       function del(id) {
-        Resource(name).delete(id).success(function () {
+        resource.delete(id).success(function () {
           getAll();
         });
       }
 
       function getAll() {
-        Resource(name).all().success(function (response) {
-          vm.processing = false;
-          vm.data = response.data;
-        });
+        resource.all()
+          .success(function (response) {
+            vm.data = response.data;
+          })
+          .error(function () {
+            vm.message = response.message;
+          })
+          .then(function () {
+            vm.processing = false;
+          });
       }
 
       function getSingle(id) {
-        Resource(name).single(id).success(function (response) {
-          vm.processing = false;
-          vm.data = response.data;
-        }).error(function () {
-          vm.message = response.message;
-        });
+        resource.single(id)
+          .success(function (response) {
+            vm.data = response.data;
+          })
+          .error(function () {
+            vm.message = response.message;
+          })
+          .then(function () {
+            vm.processing = false;
+          });
       }
 
       function update(id) {
         vm.processing = true;
         vm.message = '';
 
-        Resource(name).update(id, vm.data)
+        resource.update(id, vm.data)
           .success(function () {
-            vm.processing = false;
-            location.path('/' + name);
+            location.path('/' + resource.name);
           })
-          .error(function (response) {
-            vm.processing = false;
+          .error(function () {
             vm.message = response.message;
+          })
+          .then(function () {
+            vm.processing = false;
           });
       }
 
