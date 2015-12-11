@@ -6,37 +6,14 @@
     .controller('articlesController', articlesController);
 
 
-  function articlesController(Resource, $location) {
+  function articlesController(ResourceCtrl, $location) {
     var vm = this;
+    var articles = ResourceCtrl('articles', vm, $location);
 
-    vm.deleteArticle = deleteArticle;
-    vm.processing = true;
-    vm.editArticle = editArticle;
+    vm.delete = articles.delete;
 
+    articles.getAll();
 
-    getArticles();
-
-    //-------------------------------
-
-    function deleteArticle(id) {
-      vm.processing = true;
-
-      Resource('articles').delete(id)
-        .success(getArticles());
-    };
-
-    function editArticle(id) {
-      $location.path('/articles/' + id)
-    }
-
-    function getArticles() {
-      Resource('articles').all()
-        .success(function (data) {
-          vm.processing = false;
-          vm.articles = data;
-        });
-    }
-
-  };
+  }
 
 })();

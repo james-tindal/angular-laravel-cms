@@ -9,7 +9,7 @@
     var vm = this;
     var users = ResourceCtrl('users', vm, $location);
 
-    vm.deleteUser = users.delete;
+    vm.delete = users.delete;
 
     users.getAll();
 
