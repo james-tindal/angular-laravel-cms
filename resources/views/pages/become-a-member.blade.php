@@ -100,9 +100,9 @@
           <label for="other-salutation">Salutation</label>
           <label for="name">Name</label>
           <label for="email">Email address</label>
-          <label for="phone-number">Phone no.</label>
-          <label for="job-title">Job title</label>
-          <label for="company-name">Company name</label>
+          <label for="phone_number">Phone no.</label>
+          <label for="job_title">Job title</label>
+          <label for="company_name">Company name</label>
           <label for="comment">Anything else?</label>
         </div>
         <form method="POST">
@@ -115,14 +115,14 @@
             <option value="Dr.">Dr.</option>
             <option value="Prof.">Prof.</option>
             <option value="Rev.">Rev.</option>
-            <option value="Other">Other</option>
+            <option value="">Other</option>
           </select>
           <input type="text" name="other-salutation" id="other-salutation" placeholder="Salutation">
           <input name="name" type="text" id="name">
           <input name="email" type="email" id="email">
-          <input name="phone-number" type="tel" id="phone-number">
-          <input name="job-title" type="text" id="job-title">
-          <input name="company-name" type="text" id="company-name">
+          <input name="phone_number" type="tel" id="phone_number">
+          <input name="job_title" type="text" id="job_title">
+          <input name="company_name" type="text" id="company_name">
           <textarea name="comment" id="anything-else"></textarea>
           <input type="submit" class="submit-button" value="Submit">
         </form>

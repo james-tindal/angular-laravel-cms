@@ -9,8 +9,7 @@
       login: login,
       logout: logout,
       isLoggedIn: isLoggedIn,
-      getUser: getUser,
-      createSampleUser: createSampleUser
+      getUser: getUser
     };
 
     function login(email, password) {
@@ -41,10 +40,6 @@
         return $http.get('/api/me', {cache: true});
       else
         return $q.reject({message: 'User has no token.'});
-    }
-
-    function createSampleUser() {
-      $http.post('/api/sample');
     }
 
   }

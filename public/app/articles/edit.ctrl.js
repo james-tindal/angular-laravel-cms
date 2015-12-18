@@ -3,16 +3,16 @@
 
   angular
     .module('app.articles')
-    .controller('articleEditController', articleEditController);
+    .controller('articleEditCtrl', articleEditCtrl);
 
-  function articleEditController(ResourceCtrl, $location, $routeParams) {
+  function articleEditCtrl(ResourceCtrl, $location, $routeParams) {
     var vm = this;
     var articles = ResourceCtrl('articles', vm, $location);
 
     vm.type = 'edit';
     vm.save = articles.update;
 
-    articles.getSingle($routeParams.article_id);
+    articles.getSingle($routeParams.id);
 
   }
 

@@ -46,6 +46,7 @@ $api->version('v1', [
 ], function ($api) {
     $api->resource('articles', 'Articles', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
     $api->resource('users', 'Users', ['only' => ['index', 'store', 'show', 'update', 'destroy']]);
+    $api->resource('member-requests', 'MemberRequests', ['only' => ['index', 'show', 'update', 'destroy']]);
 });
 
 

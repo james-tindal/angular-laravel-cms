@@ -3,16 +3,16 @@
 
   angular
     .module('app.users')
-    .controller('userEditController', userEditController);
+    .controller('userEditCtrl', userEditCtrl);
 
-  function userEditController(ResourceCtrl, $location, $routeParams) {
+  function userEditCtrl(ResourceCtrl, $location, $routeParams) {
     var vm = this;
     var users = ResourceCtrl('users', vm, $location);
 
     vm.type = 'edit';
     vm.save = users.update;
 
-    users.getSingle($routeParams.user_id);
+    users.getSingle($routeParams.id);
 
   }
 

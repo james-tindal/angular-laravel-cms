@@ -3,7 +3,23 @@ angular.module('app')
   .controller('mainCtrl', function ($rootScope, $location, Auth) {
     var vm = this;
 
-    vm.doLogin = function () {
+    vm.doLogin = doLogin;
+    vm.doLogout = doLogout;
+
+    vm.loggedIn = Auth.isLoggedIn();
+
+    $rootScope.$on('$routeChangeStart', function () {
+      vm.loggedIn = Auth.isLoggedIn();
+
+      Auth.getUser()
+        .then(function (data) {
+          vm.user = data.data;
+        });
+    });
+
+    //-----------------------------------------------
+
+    function doLogin() {
       vm.processing = true;
       vm.error = '';
 
@@ -18,28 +34,11 @@ angular.module('app')
         });
     };
 
-    vm.doLogout = function () {
+    function doLogout() {
       Auth.logout();
       vm.user = '';
 
       $location.path('/login');
     };
-
-    vm.createSample = function () {
-      Auth.createSampleUser();
-    };
-
-    //-----------------------------------------------
-
-    vm.loggedIn = Auth.isLoggedIn();
-
-    $rootScope.$on('$routeChangeStart', function () {
-      vm.loggedIn = Auth.isLoggedIn();
-
-      Auth.getUser()
-        .then(function (data) {
-          vm.user = data.data;
-        });
-    });
 
   });

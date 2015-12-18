@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.core')
+    .module('resource')
     .factory('ResourceCtrl', ResourceCtrl)
 
   function ResourceCtrl(Resource) {
@@ -22,45 +22,45 @@
         vm.message = '';
 
         resource.create(vm.data)
-          .success(function () {
+          .then(function () {
             location.path('/' + resource.name);
           })
-          .error(function (response) {
-            vm.message = response.message;
+          .catch(function (response) {
+            vm.message = response.data.message;
           })
-          .then(function () {
+          .finally(function () {
             vm.processing = false;
           });
-      }
+      };
 
       function del(id) {
-        resource.delete(id).success(function () {
+        resource.delete(id).then(function () {
           getAll();
         });
-      }
+      };
 
       function getAll() {
         resource.all()
-          .success(function (response) {
-            vm.data = response.data;
+          .then(function (response) {
+            vm.data = response.data.data;
           })
-          .error(function () {
-            vm.message = response.message;
+          .catch(function (response) {
+            vm.message = response.data.message;
           })
-          .then(function () {
+          .finally(function () {
             vm.processing = false;
           });
       }
 
       function getSingle(id) {
         resource.single(id)
-          .success(function (response) {
-            vm.data = response.data;
+          .then(function (response) {
+            vm.data = response.data.data;
           })
-          .error(function () {
-            vm.message = response.message;
+          .catch(function (response) {
+            vm.message = response.data.message;
           })
-          .then(function () {
+          .finally(function () {
             vm.processing = false;
           });
       }
@@ -70,13 +70,13 @@
         vm.message = '';
 
         resource.update(id, vm.data)
-          .success(function () {
+          .then(function () {
             location.path('/' + resource.name);
           })
-          .error(function () {
-            vm.message = response.message;
+          .catch(function (response) {
+            vm.message = response.data.message;
           })
-          .then(function () {
+          .finally(function () {
             vm.processing = false;
           });
       }

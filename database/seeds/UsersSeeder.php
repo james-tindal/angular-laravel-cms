@@ -15,21 +15,21 @@ class UsersSeeder extends Seeder
         User::create([
             'administrator' => true,
             'name' => 'James Brown',
-            'email' => 'j@mesbrown.co.uk',
-            'password' => bcrypt('password')
+            'email' => 'j@m',
+            'password' => bcrypt('p')
         ]);
+
+//        User::create([
+//            'administrator' => true,
+//            'name' => 'Frank Martin',
+//            'email' => 'frank.martin@digital-results.com',
+//            'password' => bcrypt('password')
+//        ]);
 
         User::create([
             'administrator' => true,
-            'name' => 'Frank Martin',
-            'email' => 'frank.martin@digital-results.com',
-            'password' => bcrypt('password')
-        ]);
-
-        User::create([
-            'administrator' => true,
-            'name' => 'ITVET',
-            'email' => 'itvet@itvet.co.uk',
+            'name' => 'Rubber Cheese',
+            'email' => 'rubbercheese',
             'password' => bcrypt('password')
         ]);
 

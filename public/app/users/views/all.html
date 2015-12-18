@@ -24,12 +24,23 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="user in users.data">
-			<td>{{ user.name }}</td>
-			<td>{{ user.email }}</td>
+			<td>{{ ::user.name }}</td>
+			<td>{{ ::user.email }}</td>
 			<td class="col-sm-2">
-                <a ng-href="users/{{ user.id }}" class="btn btn-danger">Edit</a>
-                <a ng-click="users.delete(user.id)" class="btn btn-primary">Delete</a>
+                <a ng-href="users/{{ ::user.id }}" class="btn btn-primary">Edit</a>
+                <a ng-click="::users.delete(user.id)" class="btn btn-danger">Delete</a>
 			</td>
 		</tr>
 	</tbody>
 </table>
+
+<div class="row show-hide-message" ng-show="users.message">
+    <div class="col-sm-6 col-sm-offset-2">
+
+        <div class="alert alert-info">
+            {{ users.message }}
+        </div>
+
+    </div>
+</div>
+

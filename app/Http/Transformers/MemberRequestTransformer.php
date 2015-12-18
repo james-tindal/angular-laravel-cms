@@ -14,23 +14,22 @@ class MemberRequestTransformer extends TransformerAbstract
      * @param mixed $response
      * @param object $transformer
      * @param Binding $binding
-     * @param Request $request
+     * @param Request $memberRequest
      *
      * @return array
      */
-    public function transform(MemberRequest $request)
+    public function transform(MemberRequest $memberRequest)
     {
         return [
-            'id' => $request['id'],
-            'salutation' => $request['salutation'],
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'phone_number' => $request['phone_number'],
-            'job_title' => $request['job_title'],
-            'company_name' => $request['company_name'],
-            'comment' => $request['comment'],
-            'date' => $request['date'],
-            'archived' => (boolean) $request['archived'],
+            'id' => $memberRequest['id'],
+            'salutation' => $memberRequest['salutation'],
+            'name' => $memberRequest['name'],
+            'email' => $memberRequest['email'],
+            'phone_number' => $memberRequest['phone_number'],
+            'job_title' => $memberRequest['job_title'],
+            'company_name' => $memberRequest['company_name'],
+            'comment' => $memberRequest['comment'],
+            'date' => $memberRequest['created_at']->format('jS F Y'),
         ];
     }
 
