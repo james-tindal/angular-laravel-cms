@@ -1,6 +1,6 @@
 <?php
 
-namespace HLS\Http\Controllers\api;
+namespace HLS\Http\Controllers\Api;
 
 use HLS\Http\Transformers\MemberRequestTransformer;
 use HLS\MemberRequest;
