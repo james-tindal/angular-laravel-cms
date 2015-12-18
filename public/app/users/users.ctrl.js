@@ -3,9 +3,9 @@
 
   angular
     .module('app.users')
-    .controller('usersController', usersController);
+    .controller('usersCtrl', usersCtrl);
 
-  function usersController(ResourceCtrl, $location) {
+  function usersCtrl(ResourceCtrl, $location) {
     var vm = this;
     var users = ResourceCtrl('users', vm, $location);
 

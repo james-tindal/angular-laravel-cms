@@ -52,8 +52,8 @@ $factory->define(HLS\Event::class, function (Faker\Generator $faker) {
 
 $factory->define(HLS\MemberRequest::class, function (Faker\Generator $faker) {
     return [
-        'salutation' => rand(0, 6),
-        'name' => $faker->name,
+        'salutation' => $faker->title,
+        'name' => $faker->firstName.' '.$faker->lastName,
         'email' => $faker->email,
         'job_title' => $faker->catchPhrase,
         'company_name' => $faker->company,

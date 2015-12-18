@@ -3,9 +3,9 @@
 
   angular
     .module('app.articles')
-    .controller('articleCreateController', articleCreateController);
+    .controller('articleCreateCtrl', articleCreateCtrl);
 
-  function articleCreateController(ResourceCtrl, $location) {
+  function articleCreateCtrl(ResourceCtrl, $location) {
     var vm = this;
     var articles = ResourceCtrl('articles', vm, $location);
 

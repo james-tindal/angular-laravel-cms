@@ -26,14 +26,24 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="article in articles.data">
-			<td>{{ article.title }}</td>
-			<td>{{ article.brief }}</td>
-			<td>{{ article.published_at }}</td>
-			<td><input type="checkbox" ng-model="article.archived" disabled></td>
+			<td>{{ ::article.title }}</td>
+			<td>{{ ::article.brief }}</td>
+			<td>{{ ::article.published_at }}</td>
+			<td><input type="checkbox" ng-model="::article.archived" disabled></td>
 			<td class="col-sm-2">
-				<a ng-href="articles/{{ article.id }}" class="btn btn-danger">Edit</a>
-				<a href="#" ng-click="articles.delete(article.id)" class="btn btn-primary">Delete</a>
+				<a ng-href="articles/{{ ::article.id }}" class="btn btn-primary">Edit</a>
+				<a href="#" ng-click="::articles.delete(article.id)" class="btn btn-danger">Delete</a>
 			</td>
 		</tr>
 	</tbody>
 </table>
+
+<div class="row show-hide-message" ng-show="articles.message">
+	<div class="col-sm-6 col-sm-offset-2">
+
+		<div class="alert alert-info">
+			{{ articles.message }}
+		</div>
+
+	</div>
+</div>

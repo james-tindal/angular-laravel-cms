@@ -4,16 +4,9 @@ var gulp = require('gulp');
 var stylus = require('gulp-stylus');
 var koutoswiss = require('kouto-swiss');
 var jeet = require('jeet');
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Less
- | file for our application, as well as publishing vendor resources.
- |
- */
+
+require("laravel-elixir-babel");
+
 
 gulp.task('stylus', function () {
   gulp.src('./resources/assets/stylus/style.styl')
@@ -24,27 +17,33 @@ gulp.task('stylus', function () {
 });
 
 elixir(function (mix) {
-  mix
-    .styles([
-      'style.css'
-    ])
-    .scripts([
-      'libs/**/*.js',
-      'app.js',
-      'appRoutes.js',
-      'controllers/**/*.js',
-      'services/**/*.js',
-      'directives/**/*.js'
-    ])
-    .version([
-      'css/all.css',
-      'js/all.js'
-    ])
-    .copy(
-    'public/js/all.js.map', 'public/build/js/all.js.map'
-  )
-    .copy(
-    'public/css/all.css.map', 'public/build/css/all.css.map'
-  );
+  //mix
+  //  .styles([
+  //    'style.css'
+  //  ])
+  //  .scripts([
+  //    'libs/**/*.js',
+  //    'app.js',
+  //    'appRoutes.js',
+  //    'controllers/**/*.js',
+  //    'services/**/*.js',
+  //    'directives/**/*.js'
+  //  ])
+  //  .version([
+  //    'css/all.css',
+  //    'js/all.js'
+  //  ])
+  //  .copy(
+  //  'public/js/all.js.map', 'public/build/js/all.js.map'
+  //)
+  //  .copy(
+  //  'public/css/all.css.map', 'public/build/css/all.css.map'
+  //);
   mix.phpUnit();
+
+  mix.babel("app.js", {
+    srcDir: "resources/js",
+    output: "public/js",
+    sourceMaps: true
+  });
 });

@@ -25,8 +25,8 @@
     <script src="/app/app.js"></script>
     <script src="/app/app.routes.js"></script>
     <script src="/app/MainCtrl.js"></script>
-    <script src="/app/core/Resource.js"></script>
-    <script src="/app/core/ResourceCtrl.js"></script>
+    <script src="/app/resource/Resource.js"></script>
+    <script src="/app/resource/ResourceCtrl.js"></script>
 
     <!-- auth -->
     <script src="/app/auth/auth.js"></script>
@@ -42,6 +42,10 @@
     <script src="/app/articles/articles.ctrl.js"></script>
     <script src="/app/articles/edit.ctrl.js"></script>
     <script src="/app/articles/create.ctrl.js"></script>
+    
+    <!-- member requests -->
+    <script src="/app/member-requests/member-requests.ctrl.js"></script>
+    <script src="/app/member-requests/edit.ctrl.js"></script>
 
 </head>
 <body ng-app="app" ng-controller="mainCtrl as main">
@@ -54,9 +58,9 @@
                 <a href="" class="navbar-brand">Hertfordshire Law Society</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="users"><span class="glyphicon glyphicon-user"></span> Users</a></li>
-                <li><a href="articles"><span class="glyphicon glyphicon-user"></span> Articles</a></li>
-                <li><a href="member-requests"><span class="glyphicon glyphicon-user"></span> Member Requests</a></li>
+                <li><a href="users"></span>Users</a></li>
+                <li><a href="articles"></span>Articles</a></li>
+                <li><a href="member-requests"></span>Member Requests</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="navbar-text">Hello @{{ main.user.username }}!</li>

@@ -3,10 +3,10 @@
 
   angular
     .module('app.articles')
-    .controller('articlesController', articlesController);
+    .controller('articlesCtrl', articlesCtrl);
 
 
-  function articlesController(ResourceCtrl, $location) {
+  function articlesCtrl(ResourceCtrl, $location) {
     var vm = this;
     var articles = ResourceCtrl('articles', vm, $location);
 

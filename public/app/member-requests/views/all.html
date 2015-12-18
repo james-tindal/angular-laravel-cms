@@ -1,0 +1,47 @@
+<div class="page-header">
+	<h1>
+		Member Requests
+	</h1>
+
+</div>
+
+<div class="jumbotron text-center" ng-show="memberRequests.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading Member Requests...</p>
+</div>
+
+<table class="table table-bordered table-striped table-hover" ng-show="memberRequests.data">
+	<thead>
+		<tr>
+			<th>Name</th>
+            <th>Company</th>
+            <th>Position</th>
+			<th>Date</th>
+			<th class="col-sm-2"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="request in memberRequests.data">
+			<td>{{ ::request.salutation }} {{ request.name }}</td>
+            <td>{{ ::request.company_name }}</td>
+            <td>{{ ::request.job_title }}</td>
+			<td>{{ ::request.date }}</td>
+			<td class="col-sm-2">
+				<a ng-href="member-requests/{{ ::request.id }}" class="btn btn-primary">Review</a>
+				<a href="#" ng-click="memberRequests.delete(request.id)" class="btn btn-danger">Delete</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="row show-hide-message" ng-show="memberRequests.message">
+	<div class="col-sm-6 col-sm-offset-2">
+
+		<div class="alert alert-info">
+			{{ memberRequests.message }}
+		</div>
+
+	</div>
+</div>
+
+

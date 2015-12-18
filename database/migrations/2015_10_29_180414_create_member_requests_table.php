@@ -14,18 +14,16 @@ class CreateMemberRequestsTable extends Migration
     {
         Schema::create('member_requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('salutation',
-                ['Mr', 'Mrs', 'Miss', 'Ms', 'Dr', 'Prof', 'Rev', 'Other']);
-            $table->string('other_salutation')->nullable;
+            $table->string('salutation');
             $table->string('name');
             $table->string('email');
             $table->string('phone_number');
             $table->string('job_title');
             $table->string('company_name');
             $table->string('comment');
-            $table->timestamp('date');
             $table->boolean('archived');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

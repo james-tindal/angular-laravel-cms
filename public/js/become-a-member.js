@@ -1,5 +1,5 @@
-
 $(function () {
+
   // Switch between tabs
   $('.become-a-member nav li').click(function () {
     $('.become-a-member nav li.active').toggleClass('active');
@@ -13,7 +13,7 @@ $(function () {
 
   // Show text input when salutation 'other' selected
   var salutationHandler = function () {
-    if ($('option:selected', this).val() == 'Other') {
+    if ($('option:selected', this).val() == '') {
       $('#other-salutation, label[for="other-salutation"]').css('display', 'block');
     } else {
       $('#other-salutation, label[for="other-salutation"]').css('display', 'none');
@@ -26,6 +26,8 @@ $(function () {
     window.scrollTo(0, 0);
   });
 
+
+
   // Close sign-up modal
   $('.overlay').click(function () {
     $(this).add('.modal-form').css('display', 'none');
@@ -36,4 +38,4 @@ $(function () {
                   .change(salutationHandler)
                   .blur(salutationHandler);
   
-});
+})();

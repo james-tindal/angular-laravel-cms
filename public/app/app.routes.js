@@ -1,65 +1,69 @@
 angular
   .module('app.routes', ['ngRoute'])
 
-  .config(function($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider) {
 
     $routeProvider
 
-      // route for the home page
+    // route for the home page
       .when('/', {
-        templateUrl : '/app/home.html'
+        templateUrl: '/app/home.html',
       })
 
       // login page
       .when('/login', {
-        templateUrl : '/app/auth/login.html',
-          controller  : 'mainCtrl',
-            controllerAs: 'login'
+        templateUrl: '/app/auth/login.html',
+        controller: 'mainCtrl',
+        controllerAs: 'login'
       })
 
-      // show all users
-      .when('/users', {
-        templateUrl: '/app/users/views/all.html',
-        controller: 'usersController',
-        controllerAs: 'users'
-      })
-
-      // form to create a new user
-      // same view as edit page
-      .when('/users/create', {
-        templateUrl: '/app/users/views/single.html',
-        controller: 'userCreateController',
-        controllerAs: 'user'
-      })
-
-      // page to edit a user
-      .when('/users/:user_id', {
-        templateUrl: '/app/users/views/single.html',
-        controller: 'userEditController',
-        controllerAs: 'user'
-      })
-
-      // show all articles
+      // articles
       .when('/articles', {
         templateUrl: '/app/articles/views/all.html',
-        controller: 'articlesController',
+        controller: 'articlesCtrl',
         controllerAs: 'articles'
       })
-
-      // form to create a new article
-      // same view as edit page
       .when('/articles/create', {
         templateUrl: '/app/articles/views/single.html',
-        controller: 'articleCreateController',
+        controller: 'articleCreateCtrl',
+        controllerAs: 'article'
+      })
+      .when('/articles/:id', {
+        templateUrl: '/app/articles/views/single.html',
+        controller: 'articleEditCtrl',
         controllerAs: 'article'
       })
 
-      // page to edit a article
-      .when('/articles/:article_id', {
-        templateUrl: '/app/articles/views/single.html',
-        controller: 'articleEditController',
-        controllerAs: 'article'
-      });
+      // users
+      .when('/users', {
+        templateUrl: '/app/users/views/all.html',
+        controller: 'usersCtrl',
+        controllerAs: 'users'
+      })
+      .when('/users/create', {
+        templateUrl: '/app/users/views/single.html',
+        controller: 'userCreateCtrl',
+        controllerAs: 'user'
+      })
+      .when('/users/:id', {
+        templateUrl: '/app/users/views/single.html',
+        controller: 'userEditCtrl',
+        controllerAs: 'user'
+      })
+
+      // member-requests
+      .when('/member-requests', {
+        templateUrl: '/app/member-requests/views/all.html',
+        controller: 'memberRequestsCtrl',
+        controllerAs: 'memberRequests'
+      })
+      .when('/member-requests/:id', {
+        templateUrl: '/app/member-requests/views/single.html',
+        controller: 'memberRequestEditCtrl',
+        controllerAs: 'memberRequest'
+      })
+
+      .otherwise('/');
 
     $locationProvider.html5Mode(true);
 

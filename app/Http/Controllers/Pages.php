@@ -98,7 +98,16 @@ class Pages extends Controller
      */
     public function postBecomeAMember(Request $request)
     {
-        MemberRequest::create($request->all());
+        MemberRequest::create([
+            'salutation' => $request['salutation']
+                ?: $request['other-salutation'],
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'phone_number' => $request['phone_number'],
+            'job_title' => $request['job_title'],
+            'company_name' => $request['company_name'],
+            'comment' => $request['comment'],
+        ]);
 
         return view('pages.thank-you')->withTitle('Become a Member');
     }

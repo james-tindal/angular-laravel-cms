@@ -4,8 +4,10 @@ angular
 
     'app.routes',
     'app.auth',
+    'resource',
     'app.articles',
     'app.users',
+    'app.memberRequests'
   ])
 
 .config(function($httpProvider) {
@@ -14,8 +16,9 @@ angular
 
 });
 
-angular.module('app.core', []);
+angular.module('resource', []);
 angular.module('app.auth', []);
 angular.module('app.articles', []);
-angular.module('app.users', ['app.core']);
+angular.module('app.users', []);
+angular.module('app.memberRequests', []);
 

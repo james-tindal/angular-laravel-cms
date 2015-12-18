@@ -3,9 +3,9 @@
 
   angular
     .module('app.users')
-    .controller('userCreateController', userCreateController);
+    .controller('userCreateCtrl', userCreateCtrl);
 
-  function userCreateController(ResourceCtrl, $location) {
+  function userCreateCtrl(ResourceCtrl, $location) {
     var vm = this;
     var users = ResourceCtrl('users', vm, $location);
 

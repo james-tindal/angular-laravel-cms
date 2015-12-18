@@ -2,11 +2,11 @@
 
 namespace HLS\Http\Controllers\api;
 
+use HLS\Http\Transformers\MemberRequestTransformer;
 use HLS\MemberRequest;
 use Illuminate\Http\Request;
 
 use HLS\Http\Requests;
-use HLS\Http\Controllers\Controller;
 
 class MemberRequests extends BaseController
 {
@@ -17,7 +17,20 @@ class MemberRequests extends BaseController
      */
     public function index()
     {
-        return MemberRequest::latest('date')->get();
+        $memberRequests = MemberRequest::latest('created_at')->get();
+
+        $transformer = function ($memberRequest) {
+            return [
+                'id' => $memberRequest['id'],
+                'salutation' => $memberRequest['salutation'],
+                'name' => $memberRequest['name'],
+                'job_title' => $memberRequest['job_title'],
+                'company_name' => $memberRequest['company_name'],
+                'date' => $memberRequest['created_at']->format('jS F Y'),
+            ];
+        };
+
+        return [ 'data' => $memberRequests->map($transformer)->toArray() ];
     }
 
     /**
@@ -39,7 +52,13 @@ class MemberRequests extends BaseController
      */
     public function show($id)
     {
-        //
+        $article = MemberRequest::find($id);
+
+        if (! $article) {
+            throw new NotFoundHttpException();
+        }
+
+        return $this->item($article, new MemberRequestTransformer);
     }
 
     /**
@@ -62,6 +81,6 @@ class MemberRequests extends BaseController
      */
     public function destroy($id)
     {
-        //
+        MemberRequest::findOrFail($id)->delete();
     }
 }
