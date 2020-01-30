@@ -15,7 +15,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-phpunit": "^0.9.1",
     "lodash": "^3.10.1",
-    "morgan": "~1.5.0",
+    "morgan": "~1.9.1",
     "serve-favicon": "~2.2.0"
   },
   "devDependencies": {
