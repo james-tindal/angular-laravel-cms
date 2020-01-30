@@ -5,6 +5,9 @@ Homestead.yaml
 Homestead.json
 .env
 **/.DS_Store
+
+.ebextensions/1-env-vars.config
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
