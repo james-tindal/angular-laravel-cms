@@ -10,7 +10,7 @@ $factory->define(HLS\Article::class, function (Faker\Generator $faker) {
         'brief' => $faker->text(300),
         'extended' => $faker->text(2500),
         'published_at' => Carbon::createFromTimeStamp( $faker->dateTimeBetween( '-1 year' )->getTimestamp() ),
-        'image_url' => rand(0,2) ? 'http://lorempixel.com/412/' . rand(160, 460) . '/business' : null
+        'image_url' => rand(0,2) ? '//lorempixel.com/412/' . rand(160, 460) . '/business' : null
     ];
 });
 
@@ -42,7 +42,7 @@ $factory->define(HLS\Event::class, function (Faker\Generator $faker) {
         'brief' => $faker->text(300),
         'extended' => $faker->text(2500),
         'date' => Carbon::createFromTimeStamp( $faker->dateTimeBetween( '-1 year', '+1 year' )->getTimestamp() ),
-        'image_url' => 'http://lorempixel.com/440/337/' . (rand(0,1) ? 'business' : 'city'),
+        'image_url' => '//lorempixel.com/440/337/' . (rand(0,1) ? 'business' : 'city'),
         'training' => rand(1,3) == 1,
     ];
 });

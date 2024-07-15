@@ -21,7 +21,7 @@
 
           <article title="Benefits">
             <aside>
-              <img src="http://lorempixel.com/212/211/" alt="placeholder">
+              <img src="//lorempixel.com/212/211/" alt="placeholder">
             </aside>
             <div>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque adipisci similique tenetur earum fuga nam incidunt, suscipit enim dicta odio molestiae facilis eveniet, accusamus repellat reprehenderit et laudantium architecto nostrum perspiciatis eaque aperiam laboriosam. Rerum, maxime, fugiat? Accusantium tempora amet saepe nihil, repudiandae off icia maiores hic sequi similique cum itaque vitae veniam enim accusamus repellendus omnis est porro reprehenderit impedit. Porro, excepturi vitae, pariatur et fugiat perferendis odio voluptate error veritatis accusamus, ab similique. Expedita, esse, sapiente! Nesciunt fugiat, nulla!</p>
@@ -45,13 +45,13 @@
               </ul>
             </div>
             <aside>
-              <img src="http://lorempixel.com/211/211/" alt="placeholder">
+              <img src="//lorempixel.com/211/211/" alt="placeholder">
             </aside>
           </article>
           
           <article title="Our Network" hidden>
             <aside>
-              <img src="http://lorempixel.com/212/212/" alt="placeholder">
+              <img src="//lorempixel.com/212/212/" alt="placeholder">
             </aside>
             <div>
               <ul>
