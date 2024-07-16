@@ -12,7 +12,7 @@
         <nav class="news-categories">
             <ul>
                 @foreach($categories as $category)
-                    <li><a href="{{ url('category/' . $category->slug) }}">{{ $category->name }}</a></li>
+                    <li><a href="/category/{{ $category->slug }}">{{ $category->name }}</a></li>
                 @endforeach
             </ul>
         </nav>

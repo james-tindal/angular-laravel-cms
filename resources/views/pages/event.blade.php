@@ -13,7 +13,7 @@
                 <span>{{ $event->date }}</span>
                 {{--<span @if(sizeof($event->categories) > 0)class="with-categories"@endif>{{ $event->date }}</span>--}}
                 {{--@foreach($event->categories as $category)--}}
-                    {{--<a href="{{ url('event-category') }}/{{ $category->name }}">{{ $category->name }}</a>,--}}
+                    {{--<a href="/event-category/{{ $category->name }}">{{ $category->name }}</a>,--}}
                 {{--@endforeach--}}
             </p>
         </header>

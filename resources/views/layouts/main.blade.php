@@ -27,14 +27,14 @@
     <header>
       <nav>
         <ul>
-          <li><a href="{{ url('about-us') }}">About Us</a></li>
-          <li><a href="{{ url('news') }}">News</a></li>
-          <li><a href="{{ url('events-and-training') }}">Events &amp; Training</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/news">News</a></li>
+          <li><a href="/events-and-training">Events &amp; Training</a></li>
           <li class="logo">
-            <a href="{{ url('/') }}"><img src="/img/logo.png" alt="Home"></a></li>
-          <li><a href="{{ url('become-a-member') }}">Become a Member</a></li>
-          <li><a href="{{ url('contact-us') }}">Contact Us</a></li>
-          <li><a href="{{ url('member-area') }}">Member Area</a></li>
+            <a href="/"><img src="/img/logo.png" alt="Home"></a></li>
+          <li><a href="/become-a-member">Become a Member</a></li>
+          <li><a href="/contact-us">Contact Us</a></li>
+          <li><a href="/member-area">Member Area</a></li>
         </ul>
       </nav>
       @yield('header')
@@ -48,7 +48,7 @@
     <footer>
 
       <div class="footer__left">
-        <a href="{{ url('/') }}" class="logo"><img src="/img/logo.png"></a>
+        <a href="/" class="logo"><img src="/img/logo.png"></a>
         <p>The Hertfordshire Law Society founded in 1883 is the professional body for solicitors practising or living within Hertfordshire providing valuable benefits to its members including local CPD training, social activities and a regular newsletter.</p>
       </div>
 
@@ -56,16 +56,16 @@
 
         <nav>
           <ul>
-            <li><a href="{{ url('about-us') }}">About Us</a></li>
-            <li><a href="{{ url('news') }}">News</a></li>
-            <li><a href="{{ url('events-and-training') }}">Events &amp; Training</a></li>
-            <li><a href="{{ url('become-a-member') }}">Become a Member</a></li>
-            <li><a href="{{ url('contact-us') }}">Contact Us</a></li>
-            <li><a href="{{ url('member-area') }}">Member Area</a></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/news">News</a></li>
+            <li><a href="/events-and-training">Events &amp; Training</a></li>
+            <li><a href="/become-a-member">Become a Member</a></li>
+            <li><a href="/contact-us">Contact Us</a></li>
+            <li><a href="/member-area">Member Area</a></li>
           </ul> 
         </nav>
         <div>
-          <a class="become-a-member-button" href="{{ url('become-a-member') }}">Become a member</a>
+          <a class="become-a-member-button" href="/become-a-member">Become a member</a>
           <p>Copyright Hertfordshire Law Society 2015.</p>
         </div>
 

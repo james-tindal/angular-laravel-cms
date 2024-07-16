@@ -14,7 +14,7 @@
         <nav class="news-categories">
             <ul>
                 @foreach($categoryList as $category)
-                    <li><a href="{{ url('category/' . $category) }}">{{ $category }}</a></li>
+                    <li><a href="category/{{ $category }}">{{ $category }}</a></li>
                 @endforeach
             </ul>
         </nav>

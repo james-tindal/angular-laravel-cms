@@ -20,7 +20,7 @@
         @foreach($related as $a)
             <div class="related-article">
                 <span>{{ $a->published_at->format('jS F Y') }}</span>
-                <p><a href="{{ url('news/' . $a->slug) }}">{{ $a->title }}</a></p>
+                <p><a href="/news/{{ $a->slug }}">{{ $a->title }}</a></p>
             </div>
         @endforeach
     </div>
