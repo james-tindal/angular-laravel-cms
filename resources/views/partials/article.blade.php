@@ -10,5 +10,5 @@
             {!! $categories !!}
         </p>
     </header>
-    <p>{{ $brief }} <a href="news/{{ $slug }}">Read more</a></p>
+    <p>{{ $brief }} <a href="/news/{{ $slug }}">Read more</a></p>
 </section>
