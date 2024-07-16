@@ -9,7 +9,7 @@
     <title>@yield('title')</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
+    <link rel="stylesheet" href="/css/style.css">
     <!--[if !IE 7]><style>#wrap{display:table;height:100%}</style><![endif]-->
     <!--[if lt IE 9]><script src="js/vendor/selectivizr-1.0.2.min.js"></script><![endif]-->
     @yield('head')
@@ -31,7 +31,7 @@
           <li><a href="{{ url('news') }}">News</a></li>
           <li><a href="{{ url('events-and-training') }}">Events &amp; Training</a></li>
           <li class="logo">
-            <a href="{{ url('/') }}"><img src="{!! asset('img/logo.png') !!}" alt="Home"></a></li>
+            <a href="{{ url('/') }}"><img src="/img/logo.png" alt="Home"></a></li>
           <li><a href="{{ url('become-a-member') }}">Become a Member</a></li>
           <li><a href="{{ url('contact-us') }}">Contact Us</a></li>
           <li><a href="{{ url('member-area') }}">Member Area</a></li>
@@ -48,7 +48,7 @@
     <footer>
 
       <div class="footer__left">
-        <a href="{{ url('/') }}" class="logo"><img src="{!! asset('img/logo.png') !!}"></a>
+        <a href="{{ url('/') }}" class="logo"><img src="/img/logo.png"></a>
         <p>The Hertfordshire Law Society founded in 1883 is the professional body for solicitors practising or living within Hertfordshire providing valuable benefits to its members including local CPD training, social activities and a regular newsletter.</p>
       </div>
 
