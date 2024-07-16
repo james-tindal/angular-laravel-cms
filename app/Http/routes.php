@@ -1,5 +1,7 @@
 <?php
 
+URL::forceSchema("https");
+
 Route::get('/', 'Pages@index');
 
 Route::get('/about-us', 'Pages@aboutUs');
